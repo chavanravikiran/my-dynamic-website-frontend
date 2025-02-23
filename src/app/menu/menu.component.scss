@@ -1,0 +1,180 @@
+.menu-container {
+    position: fixed;
+    // top: -100%; /* Initially hidden above the screen */
+    // left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(124, 114, 98, 0.8); /* Background color with transparency */
+    display: flex;
+    flex-direction: column;
+    z-index: 999;
+    color: white;
+    transition: top 0.5s ease-in-out; /* Sliding effect */
+  }
+  
+  
+  /* Show Menu */
+  .menu-container.show {
+    top: 0; /* Slide in from top */
+  }
+  
+  /* Menu Button */
+  .menu-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: rgb(71, 29, 186);
+    cursor: pointer;
+    z-index: 1000;
+  }
+  
+  /* Menu */
+  .menu {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  /* Menu Links */
+  .menu-links {
+    display: flex;
+    flex-direction: column;
+    // gap-y: 15px;
+  }
+  
+  .menu-link {
+    position: relative;
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s ease;
+  }
+  
+  .menu-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Styling for JS Slide */
+  .js-slide {
+    transform: translate(0px, 0px);
+    transition: transform 0.3s ease;
+  }
+  
+  .menu-footer {
+    margin-top: auto;
+    text-align: center;
+    font-size: 14px;
+  }
+  
+  .menu-content {
+    display: flex;
+    align-items: center; /* Vertically center content */
+    justify-content: flex-start;
+    padding: 20px;
+    gap: 20px;
+  }
+  
+  /* Menu Left - Image */
+  .menu-left {
+    flex-shrink: 0;
+  }
+  
+  .menu-image {
+    width: 100%;
+    height: auto;
+    max-width: 200px;
+    border-radius: 8px; /* Optional: Add border radius for a better look */
+  }
+  
+  /* Menu Right - Links */
+  .menu-right {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Increased gap between links */
+    text-align: center;
+  }
+  
+  /* Menu Links */
+  .menu-links {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Increased gap between links */
+  }
+  
+  .menu-link {
+    font-size: 3.2rem; /* Adjust the font size */
+    // font-family: 'Arial', sans-serif; /* Set a different font */
+    font-family: 'Times New Roman', serif; /* Set a different font */
+    color: white;
+    text-decoration: none;
+    padding: 8px;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+  }
+  
+  .menu-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    font-size: 1.25rem; /* Increase font size on hover */
+  }
+
+  
+  /* menu.component.scss */
+// .menu-container {
+//     position: fixed;
+//     top: -100%;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     background-color: rgba(124, 114, 98, 0.8);
+//     display: flex;
+//     flex-direction: column;
+//     z-index: 999;
+//     color: white;
+//     transition: top 0.5s ease-in-out;
+//   }
+  
+//   .menu-container.show {
+//     top: 0;
+//   }
+  
+//   .menu-button {
+//     position: absolute;
+//     top: 20px;
+//     left: 20px;
+//     font-size: 24px;
+//     background: none;
+//     border: none;
+//     color: rgb(71, 29, 186);
+//     cursor: pointer;
+//     z-index: 1000;
+//   }
+  
+//   .menu-links {
+//     display: flex;
+//     flex-direction: column;
+//     gap: 15px;
+//   }
+  
+//   .menu-link {
+//     font-size: 3.2rem;
+//     font-family: 'Times New Roman', serif;
+//     color: white;
+//     text-decoration: none;
+//     padding: 8px;
+//     transition: all 0.3s ease;
+//     border-radius: 4px;
+//   }
+  
+//   .menu-link:hover {
+//     background-color: rgba(255, 255, 255, 0.1);
+//     font-size: 1.25rem;
+//   }
+  

@@ -1,0 +1,17 @@
+<div class="header-container">
+  <div class="brand-logo" (click)="navigateToHome()">
+    <!-- <img [src] = "'assets/images/'+websiteDetails?.websiteLogo" alt="Brand Logo" /> -->
+    <img *ngIf="websiteDetails?.websiteLogo" [src]="websiteDetails?.websiteLogo" alt="Brand Logo" />
+    <span class="brand-name">{{websiteDetails?.websiteName}}</span>
+  </div>
+  <nav class="header-nav">
+    <ul>
+      <li *ngFor="let link of navLinks">
+        <a [routerLink]="link.path">{{ link.name }}</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+  
+
+   
