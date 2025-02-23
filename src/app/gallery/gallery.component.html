@@ -1,0 +1,30 @@
+<div class="gallery-container">
+    <!-- Event Type Cards -->
+    <div class="event-types">
+      <div
+        class="event-card"
+        *ngFor="let event of events"
+        (click)="filterImages(event.type)"
+      >
+        <h3>{{ event.name }}</h3>
+      </div>
+    </div>
+  
+    <!-- Gallery Images -->
+    <div class="gallery-images" *ngIf="filteredImages.length > 0">
+      <div class="image-card" *ngFor="let image of filteredImages" (click)="openSlider(image)">
+        <img [src]="image.url" [alt]="image.alt" />
+      </div>
+    </div>
+  
+    <!-- Slider -->
+    <div class="slider" *ngIf="selectedImage">
+      <div class="slider-content">
+        <img [src]="selectedImage.url" [alt]="selectedImage.alt" />
+        <button class="prev" (click)="previousImage()">&lt;</button>
+        <button class="next" (click)="nextImage()">&gt;</button>
+      </div>
+      <button class="close" (click)="closeSlider()">X</button>
+    </div>
+  </div>
+  

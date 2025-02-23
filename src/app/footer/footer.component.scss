@@ -1,0 +1,103 @@
+.footer {
+  background-color: #54546f;
+  color: #fff;
+  padding: 40px 20px;
+
+  a {
+    color: #ff5722; /* Set the default color */
+    font-weight: bold;
+    text-decoration: none; /* Remove underline */
+
+    &:hover {
+      color: #f1734d; /* Change color on hover */
+      text-decoration: underline; /* Add underline effect */
+    }
+  }
+
+  h4 {
+    font-size: 1.4rem; /* Set font size */
+    font-weight: bold; /* Make it bold */
+    margin-top: 20px; /* Add spacing */
+    color: #ff5722; /* Accent color for visibility */
+    border-bottom: 2px solid #ff5722; /* Underline effect */
+    display: inline-block; /* Prevent full-width underline */
+    padding-bottom: 5px; /* Space between text and underline */
+  }
+  
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.3s ease-in;
+  }
+
+  .footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+
+    .footer-section {
+      padding: 10px;
+    }
+
+    /* Address Section */
+    .contact-us {
+      flex: 1 1 30%;
+      text-align: left;
+    }
+
+    /* Social Media Section */
+    .social-media {
+      flex: 1 1 20%;
+      text-align: center;
+
+      .follow-us {
+        a {
+          margin: 0 10px;
+          font-size: 1.5rem;
+          color: #fff;
+          transition: color 0.3s;
+
+          &:hover {
+            color: #ff5722;
+          }
+        }
+      }
+    }
+
+    /* Map Section */
+    .google-map {
+      flex: 1 1 50%;
+      text-align: center;
+
+      google-map {
+        width: 100%;
+        height: 200px;
+        margin-top: 20px;
+      }
+    }
+  }
+
+  /* 📱 Mobile View - Full Width Stacked Layout */
+  @media (max-width: 768px) {
+    .footer-content {
+      flex-direction: column;
+      text-align: center;
+
+      .contact-us {
+        flex: 1 1 100%; /* Full width */
+      }
+
+      .social-media {
+        flex: 1 1 100%; /* Full width */
+        margin-top: 20px;
+      }
+
+      .google-map {
+        flex: 1 1 100%; /* Full width */
+        margin-top: 20px;
+      }
+    }
+  }
+}

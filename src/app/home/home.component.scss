@@ -1,0 +1,53 @@
+.home-page {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('/assets/images/Home_background.jpeg') no-repeat center center/cover;
+    color: white;
+    text-align: center;
+  
+    /* Adding transparency to the background */
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5); // Adjust transparency with the alpha value
+      z-index: 1;
+    }
+  
+    .content-container {
+      position: relative;
+      z-index: 2;
+  
+      h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+  
+      p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+      }
+  
+      .get-started-btn {
+        background-color: #ff5722;
+        color: white;
+        border: none;
+        padding: 1rem 2rem;
+        font-size: 1.2rem;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+  
+        &:hover {
+          background-color: #e64a19;
+        }
+      }
+    }
+  }
+  

@@ -1,0 +1,121 @@
+.gallery-container {
+    padding: 20px;
+    text-align: center;
+  
+    .event-types {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 20px;
+      margin-top: 20px;
+
+      .event-card {
+        // padding: 10px 20px;
+        // border: 1px solid #ddd;
+        // border-radius: 5px;
+        // cursor: pointer;
+        // background-color: #f9f9f9;
+        // transition: transform 0.2s, background-color 0.2s;
+        padding: 15px 25px; /* Increased padding for better spacing */
+      border: 2px solid #ccc; /* Slightly thicker border */
+      border-radius: 10px; /* More rounded corners */
+      cursor: pointer;
+      background-color: #ffffff; /* White background */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Added shadow for depth */
+      transition: transform 0.2s, background-color 0.2s;
+
+  
+        &:hover {
+          transform: scale(1.1);
+        //   background-color: #e0e0e0;
+        background-color: #f0f8ff; 
+        }
+
+        h3 {
+            font-size: 1.2rem; /* Slightly larger font size */
+            font-weight: bold;
+            color: #333; /* Darker text color */
+            margin: 0;
+          }
+      }
+    }
+  
+    .gallery-images {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+  
+      .image-card {
+        overflow: hidden;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: transform 0.2s;
+  
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.2s;
+        }
+  
+        &:hover img {
+        //   transform: scale(1.05);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+      }
+    }
+  
+    .slider {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1050;
+
+      .slider-content {
+        position: relative;
+  
+        img {
+          max-width: 80%;
+          max-height: 80%;
+        }
+  
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1002;
+          }
+          
+          .prev {
+            left: 10px;
+          }
+          
+          .next {
+            right: 10px;
+          }
+      }
+  
+      .close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: none;
+        border: none;
+        font-size: 2rem;
+        color: white;
+        cursor: pointer;
+      }
+    }
+  }
+  

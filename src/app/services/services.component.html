@@ -1,0 +1,14 @@
+<section class="services">
+    <h1 class="services-title">SERVICES</h1>
+    <p class="services-description">
+      I'm a paragraph. Click here to add your own text and edit me. It's easy. Just click “Edit Text” or double-click me to add your own content and make changes to the font.
+    </p>
+    <div class="services-container">
+      <div class="service-item" *ngFor="let service of services">
+        <img [src]="'assets/images/' + service.image" alt="Service Image" />
+        <h3>{{ service.name }}</h3>
+        <p>{{ service.description }}</p>
+      </div>
+    </div>
+  </section>
+  
