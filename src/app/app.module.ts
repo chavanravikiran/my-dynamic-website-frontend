@@ -54,6 +54,7 @@ import { HeaderComponent } from "./header/header.component";
 import { ContactUsComponent } from "./contact-us/contact-us.component";
 import { GoogleMapComponent } from "./google-map/google-map.component";
 import { GoogleMapsModule } from '@angular/google-maps';
+import { PortfolioComponent } from "./portfolio/portfolio.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,6 +69,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
     LiveCountComponent,
     GalleryComponent,
     GoogleMapComponent,
+    PortfolioComponent
     ],
   imports: [
     BrowserModule,

@@ -12,6 +12,7 @@ import { followUsResponse } from "../models/followUs-response";
 import { WebsiteLatLongResponse } from "../models/website-lat-long";
 import { contactUsResponse } from "../models/contact-us-response";
 import { GalleryResponse } from "../models/gallery-response";
+import { PortfolioModel } from "../models/portfolio-model";
 
 export const api_url = "http://localhost:8280"; // dev
 @Injectable({
@@ -86,5 +87,7 @@ export class ApplicationService {
     return this.http.get<contactUsResponse>(api_url+ "/api/contact-us/"+websiteType);
   }
 
-  
+  getStudentPortfolio(websiteType: string): Observable<PortfolioModel> {
+    return this.http.get<PortfolioModel>(api_url+ "/api/student/"+websiteType);
+  }
 }

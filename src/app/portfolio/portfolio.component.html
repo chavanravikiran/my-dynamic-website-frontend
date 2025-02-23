@@ -1,0 +1,70 @@
+<div class="portfolio-container" *ngIf="portfolio">
+  <div class="header">
+    <img [src]="portfolio.selfPhoto ? 'data:image/png;base64,' + portfolio.selfPhoto : 'assets/images/black_face.jpg'" alt="Student Photo">
+    <h2>{{ portfolio.studentName }}</h2>
+    <p>Age: {{ portfolio.age }}</p>
+    <p>Website: {{ portfolio.websiteName }}</p>
+  </div>
+
+  <!-- Academic Details -->
+  <div class="section">
+    <h3>Academic Details</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Degree</th>
+          <th>Institution</th>
+          <th>Passing Year</th>
+          <th>Percentage</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let academic of portfolio.academicDetail">
+          <td>{{ academic.degree }}</td>
+          <td>{{ academic.institution }}</td>
+          <td>{{ academic.passingYear | date:'yyyy' }}</td>
+          <td>{{ academic.percentage }}%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Skills -->
+  <div class="section">
+    <h3>Skills</h3>
+    <ul>
+      <li *ngFor="let skill of portfolio.skill">
+        <strong>{{ skill.skillName }}</strong> ({{ skill.proficiencyLevel }}) - 
+        <div class="progress-bar">
+          <div class="progress" [style.width.%]="skill.percentage" [style.background]="getSkillColor(skill.percentage)"></div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Projects -->
+  <div class="section">
+    <h3>Projects</h3>
+    <ul>
+      <li *ngFor="let project of portfolio.project">
+        <strong>{{ project.projectName }}</strong>:
+        <ul>
+          <li *ngFor="let point of project.description.split('\\n')">{{ point }}</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Language Proficiency -->
+  <div class="section">
+    <h3>Languages</h3>
+    <div *ngFor="let lang of portfolio.language" class="language-container">
+      <p>{{ lang.languageName }}</p>
+      <div class="progress-bar">
+        <div class="progress" [style.width.%]="calculateLanguageProficiency(lang)" [style.background]="getLanguageColor(calculateLanguageProficiency(lang))">
+          {{ calculateLanguageProficiency(lang) }}%
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

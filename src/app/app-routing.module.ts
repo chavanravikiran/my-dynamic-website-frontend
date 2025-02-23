@@ -11,6 +11,7 @@ import { InquiryComponent } from "./inquiry/inquiry.component";
 import { AboutUsComponent } from "./about-us/about-us.component";
 import { LiveCountComponent } from "./live-count/live-count.component";
 import { GalleryComponent } from "./gallery/gallery.component";
+import { PortfolioComponent } from "./portfolio/portfolio.component";
 
 
 const routes: Routes = [
@@ -32,7 +33,7 @@ const routes: Routes = [
   { path: 'about', component: AboutUsComponent },
   { path: 'live-count', component: LiveCountComponent },
   { path: 'gallery', component: GalleryComponent },
-
+  { path: 'portfolio', component: PortfolioComponent },
   {
     path: "appointment",
     children: [],
