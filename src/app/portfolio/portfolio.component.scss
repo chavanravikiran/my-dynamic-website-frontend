@@ -84,3 +84,43 @@
     font-weight: bold;
   }
   
+  .download-btn {
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    float: right  ;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+  }
+  
+  .downloadPosition {
+    margin: 20px;
+    float: right;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 15px;
+  }
+  
+  /* Custom button styles */
+  .custom-download-btn {
+    background-color: #0056b3 !important;
+    color: white !important;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.3s ease-in-out;
+  }
+  
+  /* Hover effect */
+  .custom-download-btn:hover {
+    background-color: #004494 !important;
+  }
+  

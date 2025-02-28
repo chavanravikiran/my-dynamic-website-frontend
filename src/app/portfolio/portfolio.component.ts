@@ -4,7 +4,8 @@ import { PortfolioModel } from '../appointment/models/portfolio-model';
 import { environment } from 'src/environments/environment';
 import { WebSiteType } from '../appointment/models/website-type.enum';
 import { Language } from '../appointment/models/language-model';
-
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 @Component({
   selector: 'app-portfolio',
   templateUrl: './portfolio.component.html',
@@ -55,5 +56,38 @@ export class PortfolioComponent implements OnInit {
   // Get Skill Color Based on Percentage
   getSkillColor(percentage: number): string {
     return percentage > 80 ? '#4CAF50' : percentage > 60 ? '#FFC107' : '#FF5722';
+  }
+
+  downloadPDF(): void {
+    const element = document.querySelector('.portfolio-container') as HTMLElement;
+  
+    if (!element) {
+      console.error('Portfolio container not found');
+      return;
+    }
+  
+    html2canvas(element, { scale: 2 }).then((canvas) => {
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF('p', 'mm', 'a4'); // A4 size
+  
+      const imgWidth = 210; // A4 width in mm
+      const pageHeight = 297; // A4 height in mm
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+  
+      let heightLeft = imgHeight;
+      let position = 0;
+  
+      pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight, '', 'FAST');
+      heightLeft -= pageHeight;
+  
+      while (heightLeft > 0) {
+        position = heightLeft - imgHeight;
+        pdf.addPage();
+        pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight, '', 'FAST');
+        heightLeft -= pageHeight;
+      }
+  
+      pdf.save('Portfolio.pdf');
+    });
   }
 }
