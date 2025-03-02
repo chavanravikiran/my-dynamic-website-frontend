@@ -36,7 +36,7 @@
 
   <!-- Projects -->
   <div class="section">
-    <h3>Projects</h3>
+    <h3>Academic Projects</h3>
     <ul>
       <li *ngFor="let project of portfolio.project">
         <strong>{{ project.projectName }}</strong>:
@@ -46,6 +46,37 @@
       </li>
     </ul>
   </div>
+
+  <div class="">
+    <h3>EXPERIENCE</h3>
+    <ul class="experience-list">
+      <li *ngFor="let experience of portfolio.experiences" class="experience-item">
+       
+        <div class="projects">
+          <div *ngFor="let project of experience.projects" class="project-card">
+            <h4>{{ project.projectName }}</h4>
+            <div class="experience-header">
+              <strong>{{ experience.companyName }}</strong>
+              <span class="experience-dates">
+                {{ experience.startDateOnWorkingProject | date:'MMM yyyy' }} - 
+                {{ experience.endDateOnWorkingProject ? (experience.endDateOnWorkingProject | date:'MMM yyyy') : 'Till Date' }}
+              </span>
+            </div>
+            <hr class="double-line" />
+            <p class="tech-stack"><strong>Technology Used:</strong> {{ experience.technology }}</p>
+            <div class="description">
+              <ul>
+                <li *ngFor="let point of project.description.split('\\n')">
+                  {{ point }}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  
 
   <!-- Skills -->
   <div class="section">

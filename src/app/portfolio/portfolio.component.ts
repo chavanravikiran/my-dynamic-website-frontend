@@ -70,21 +70,23 @@ export class PortfolioComponent implements OnInit {
       const imgData = canvas.toDataURL('image/png');
       const pdf = new jsPDF('p', 'mm', 'a4'); // A4 size
   
-      const imgWidth = 210; // A4 width in mm
-      const pageHeight = 297; // A4 height in mm
+      const imgWidth = 190; // Slightly reduced width for margins
+      const pageHeight = 400;
       const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      const marginTop = 15; // Add space at the top
+      const marginBottom = 15; // Add space at the bottom
   
       let heightLeft = imgHeight;
-      let position = 0;
+      let position = marginTop; // Start below the margin
   
-      pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight, '', 'FAST');
-      heightLeft -= pageHeight;
+      pdf.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight, '', 'FAST');
+      heightLeft -= (pageHeight - marginTop - marginBottom);
   
       while (heightLeft > 0) {
-        position = heightLeft - imgHeight;
+        position = heightLeft - imgHeight + marginTop;
         pdf.addPage();
-        pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight, '', 'FAST');
-        heightLeft -= pageHeight;
+        pdf.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight, '', 'FAST');
+        heightLeft -= (pageHeight - marginTop - marginBottom);
       }
   
       pdf.save('Portfolio.pdf');

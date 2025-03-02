@@ -1,4 +1,5 @@
 import { AcademicDetail } from "./academic-detail";
+import { Experiences } from "./experiences-model";
 import { Language } from "./language-model";
 import { Project } from "./project-model";
 import { Skill } from "./skill-model";
@@ -15,5 +16,6 @@ export class PortfolioModel {
         public skill: Skill[],
         public project: Project[],
         public language: Language[],
+        public experiences: Experiences[],
     ) { }
 }
