@@ -12,12 +12,15 @@ import { AboutUsComponent } from "./about-us/about-us.component";
 import { LiveCountComponent } from "./live-count/live-count.component";
 import { GalleryComponent } from "./gallery/gallery.component";
 import { PortfolioComponent } from "./portfolio/portfolio.component";
+import { LoginComponent } from "./login/login.component";
+import { AuthGuard } from "./auth.guard";
+import { RegistrationComponent } from "./registration/registration.component";
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'services', component: ServicesComponent },
+  { path: 'services', component: ServicesComponent ,canActivate: [AuthGuard]},
   { path: 'contactus', component: ContactUsComponent },
   { path: 'design', component: DesignComponent },
   // { path: 'availability', component: AvailabilityComponent },
@@ -28,6 +31,8 @@ const routes: Routes = [
   { path: 'live-count', component: LiveCountComponent },
   { path: 'gallery', component: GalleryComponent },
   { path: 'portfolio', component: PortfolioComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'registration', component: RegistrationComponent },
   {
     path: "appointment",
     children: [],

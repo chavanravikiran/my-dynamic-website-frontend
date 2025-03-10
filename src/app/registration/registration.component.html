@@ -1,0 +1,62 @@
+<div class="login-container">
+  <div class="glass-card">
+    <div class="login-form-container">
+      <div class="login-form-content">
+        <h2 class="login-title">Registration</h2>
+
+        <form [formGroup]="registrationForm" (ngSubmit)="registerUser()" class="login-form">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input formControlName="name" id="name" placeholder="Enter your full name" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input formControlName="username" id="username" placeholder="Enter your username" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input formControlName="email" type="email" id="email" placeholder="Enter your email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="phoneNumber">Phone Number</label>
+            <input formControlName="phoneNumber" type="phoneNumber" id="phoneNumber" placeholder="Enter your phone Number" required>
+          </div>
+
+          <div class="form-group">
+            <label for="address">Address</label>
+            <input formControlName="address" id="address" placeholder="Enter your address" required>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input formControlName="password" type="password" id="password" (input)="checkPasswordStrength()" placeholder="Enter your password" required>
+            <small>Password must be at least 8 characters, include an uppercase letter, a number, and a special character.</small>
+            <!-- <div class="password-strength">
+              <div class="strength-bar" [style.width.%]="passwordStrength"></div>
+            </div> -->
+            <div class="password-strength">
+              <div class="strength-bar" 
+                   [ngClass]="getPasswordStrengthClass()" 
+                   [style.width.%]="passwordStrength">
+              </div>
+            </div>
+            <small *ngIf="passwordStrength < 40" class="weak-password">Weak Password</small>
+          </div>
+
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <input formControlName="confirmPassword" type="password" id="confirmPassword" placeholder="Confirm your password" required>
+            <small *ngIf="registrationForm.hasError('passwordMismatch')" class="error-message">Passwords do not match.</small>
+          </div>
+
+          <button type="submit" [disabled]="registrationForm.invalid || registrationForm.hasError('passwordMismatch')" class="btn-primary">Register</button>
+
+          <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

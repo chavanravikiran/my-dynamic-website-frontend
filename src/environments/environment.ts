@@ -7,7 +7,7 @@ import { WebSiteType } from "src/app/appointment/models/website-type.enum";
 export const environment = {
   production: false,
   websiteType: WebSiteType.PORTFOLIO_WEBSITE,
-  
+  apiUrl : "http://localhost:8280"
 };
 
 /*

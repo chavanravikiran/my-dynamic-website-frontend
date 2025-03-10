@@ -2,7 +2,7 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { RouteReuseStrategy } from "@angular/router";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { HttpClientModule,} from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClientModule,} from "@angular/common/http";
 import { IonicModule, IonicRouteStrategy } from "@ionic/angular";
 import { AppComponent } from "./app.component";
 import { AppRoutingModule } from "./app-routing.module";
@@ -55,6 +55,9 @@ import { ContactUsComponent } from "./contact-us/contact-us.component";
 import { GoogleMapComponent } from "./google-map/google-map.component";
 import { GoogleMapsModule } from '@angular/google-maps';
 import { PortfolioComponent } from "./portfolio/portfolio.component";
+import { AuthInterceptor } from "./auth.interceptor";
+import { LoginComponent } from "./login/login.component";
+import { RegistrationComponent } from "./registration/registration.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,7 +72,10 @@ import { PortfolioComponent } from "./portfolio/portfolio.component";
     LiveCountComponent,
     GalleryComponent,
     GoogleMapComponent,
-    PortfolioComponent
+    PortfolioComponent,
+    LoginComponent,
+    RegistrationComponent,
+    
     ],
   imports: [
     BrowserModule,
@@ -109,7 +115,7 @@ import { PortfolioComponent } from "./portfolio/portfolio.component";
     MatCardModule,
     TranslocoModule,
     CommonModule,
-    GoogleMapsModule
+    GoogleMapsModule,
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
@@ -121,8 +127,10 @@ import { PortfolioComponent } from "./portfolio/portfolio.component";
     { provide: MAT_DIALOG_DATA, useValue: {} },
     { provide: MatDialogRef, useValue: {} },
     { provide: MAT_DATE_LOCALE, useValue: "en-GB" },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     NetworkInterface,,
   ],
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA] // ✅ Allow Web Components
 })
 export class AppModule {}

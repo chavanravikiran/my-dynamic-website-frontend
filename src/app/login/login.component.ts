@@ -1,0 +1,49 @@
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
+declare var particlesJS: any;
+
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
+})
+export class LoginComponent implements OnInit {
+  
+  loginForm!: FormGroup;
+  errorMessage: string = '';
+
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {}
+
+  ngOnInit(): void {
+    // particlesJS.load('particles-js', 'assets/particles.json', () => {
+    //   console.log('Particles.js loaded');
+    // });
+
+    this.loginForm = this.fb.group({
+      username: ['', [Validators.required, Validators.minLength(4)]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+    });
+  }
+
+  onSubmit(): void {
+    if (this.loginForm.valid) {
+      console.log("----------->",this.loginForm);
+      this.authService.login(this.loginForm.value).subscribe({
+        next: (response) => {
+          console.log('Login successful:', response);
+          localStorage.setItem('token', response.token);
+          this.router.navigate(['/dashboard']);
+        },
+        error: (err) => {
+          console.error('Login error:', err);
+          this.errorMessage = 'Invalid username or password';
+        }
+      });
+    } else {
+      this.errorMessage = 'Please fill in all fields correctly.';
+    }
+  }
+  
+}

@@ -18,39 +18,36 @@ export class InterceptorService implements HttpInterceptor {
 
   constructor(private translocoService: TranslocoService) { }
 
+  // intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  //   if (this.token == null || this.token == "") {
+  //     this.token = "";
+  //   } else {
+  //     this.token = localStorage.getItem("token");
+  //   }
+  //   req = req.clone({
+  //     headers: req.headers
+  //       .append(
+  //         "Authorization",
+  //         localStorage.getItem("token") != null && localStorage.getItem("token") != "null"
+  //           ? "Bearer " + localStorage.getItem("token")
+  //           : ""
+  //       )
+  //       .append("Accept-Language", this.translocoService.getActiveLang())
+  //       .append("isRefreshToken", "true"),
+  //   });
+  //   return next.handle(req);
+  // }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    if (this.token == null || this.token == "") {
-      this.token = "";
-    } else {
-      this.token = localStorage.getItem("token");
-    }
-    // req = req.clone({
-    //   setHeaders: {
-    //     // username: "ILMSUSER",
-    //     // password: "ILMS@1234",
-    //     // // auth_matcher_url: "http://localhost:38080/api/**"
-    //     Accept: "application/json",
-    //     "Content-Type": "application/json",
-    //     Authorization: "Bearer " + this.token,
-    //   },
-    // });
-    req = req.clone({
+    let token = localStorage.getItem("token");
+    let authHeader = token && token !== "null" ? `Bearer ${token}` : "";
+
+    const modifiedReq = req.clone({
       headers: req.headers
-        .append(
-          "Authorization",
-          localStorage.getItem("token") != null && localStorage.getItem("token") != "null"
-            ? "Bearer " + localStorage.getItem("token")
-            : ""
-        )
-        .append("Accept-Language", this.translocoService.getActiveLang())
-        .append("isRefreshToken", "true"),
+        .set("Authorization", authHeader)
+        .set("Accept-Language", this.translocoService.getActiveLang())
+        .set("isRefreshToken", "true"),
     });
-    // req = req.clone({
-    //   headers: req.headers
-    //     .append("Content-Type", "application/json")
-    //     .append("Accept", "application/json")
-    //     .append("Authorization", "Bearer " + this.token),
-    // });
-    return next.handle(req);
+
+    return next.handle(modifiedReq);
   }
 }
