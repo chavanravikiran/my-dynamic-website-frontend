@@ -27,10 +27,14 @@ export class AuthService {
     return !!localStorage.getItem('token');
   }
 
+  // getToken(): string | null {
+  //   return localStorage.getItem('token');
+  // }
   getToken(): string | null {
-    return localStorage.getItem('token');
+    const token = localStorage.getItem('token');
+    return token && token !== 'null' && token !== 'undefined' ? token : null;
   }
-
+  
   logout(): void {
     localStorage.removeItem('token');
   }

@@ -28,6 +28,10 @@ export class HeaderComponent implements OnInit {
     private websideService: ApplicationService
   ) {} 
 
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('token');
+  }
+
   ngOnInit(): void {
     this.websideService.getWebsiteDetails(this.websiteType).subscribe({
       next: (response) => {
@@ -72,5 +76,9 @@ export class HeaderComponent implements OnInit {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+  }
+  logout(): void {
+    localStorage.removeItem('token');
+    this.router.navigate(['/home']);
   }
 }

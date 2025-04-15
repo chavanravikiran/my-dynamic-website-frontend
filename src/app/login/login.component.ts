@@ -17,10 +17,6 @@ export class LoginComponent implements OnInit {
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
-    // particlesJS.load('particles-js', 'assets/particles.json', () => {
-    //   console.log('Particles.js loaded');
-    // });
-
     this.loginForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(4)]],
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -37,7 +33,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('role', response.roles[0]);
           localStorage.setItem('websiteType', response.websiteType);
           localStorage.setItem('userName', response.userName);
-          
+
           this.router.navigate(['/dashboard']);
         },
         error: (err) => {

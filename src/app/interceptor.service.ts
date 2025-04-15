@@ -18,25 +18,6 @@ export class InterceptorService implements HttpInterceptor {
 
   constructor(private translocoService: TranslocoService) { }
 
-  // intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-  //   if (this.token == null || this.token == "") {
-  //     this.token = "";
-  //   } else {
-  //     this.token = localStorage.getItem("token");
-  //   }
-  //   req = req.clone({
-  //     headers: req.headers
-  //       .append(
-  //         "Authorization",
-  //         localStorage.getItem("token") != null && localStorage.getItem("token") != "null"
-  //           ? "Bearer " + localStorage.getItem("token")
-  //           : ""
-  //       )
-  //       .append("Accept-Language", this.translocoService.getActiveLang())
-  //       .append("isRefreshToken", "true"),
-  //   });
-  //   return next.handle(req);
-  // }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let token = localStorage.getItem("token");
     let authHeader = token && token !== "null" ? `Bearer ${token}` : "";

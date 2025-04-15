@@ -4,12 +4,15 @@
     <img *ngIf="websiteDetails?.websiteLogo" [src]="websiteDetails?.websiteLogo" alt="Brand Logo" />
     <span class="brand-name">{{websiteDetails?.websiteName}}</span>
   </div>
-  <nav class="header-nav">
+  <nav class="header-nav" *ngIf="!isLoggedIn()">
     <ul>
       <li *ngFor="let link of navLinks">
         <a [routerLink]="link.path">{{ link.name }}</a>
       </li>
     </ul>
+  </nav>
+  <nav class="header-nav" *ngIf="isLoggedIn()">
+    <button (click)="logout()" class="logout-btn">Logout</button>
   </nav>
 </div>
   

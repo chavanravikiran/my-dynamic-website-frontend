@@ -46,7 +46,7 @@ const routes: Routes = [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent },
       { path: 'my-portfolio', component: PortfolioComponent },
-      // { path: 'skills', component: SkillsComponent },
+      { path: 'services', component: ServicesComponent },
       // { path: 'projects', component: ProjectsComponent },
       { path: 'contact-info', component: ContactUsComponent },
     ]

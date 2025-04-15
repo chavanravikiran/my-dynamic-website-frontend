@@ -1,4 +1,3 @@
-
 // App.component.scss
 .container {
   display: flex;
@@ -17,9 +16,7 @@ app-header {
 
 .body-content {
   flex: 1;
-  margin-top: 60px; /* Add margin to account for the header height */
-  // padding: 20px; /* Add padding if needed */
-  // overflow: auto; /* Enable scrolling for large content */
+  margin-top: 60px;
 }
 
 .app-footer {
@@ -28,12 +25,34 @@ app-header {
   z-index: 1000;         /* Ensure footer is below the slider */
 }
 
-// .body-content {
-//   flex: 1;
-//   margin-top: 60px;
-//   display: flex;
-//   flex-direction: column;
-//   gap: 20px;
-//   padding: 20px;
-//   scroll-behavior: smooth;
-// }
+.dashboard-wrapper {
+  display: flex;
+  width: 100%;
+}
+
+.dashboard-content {
+  flex-grow: 1;
+  padding: 15px;
+
+  @media (max-width: 768px) {
+    margin-left: 0;
+  }
+}
+
+.main-content {
+  margin-top: 10px; // below header
+  margin-left: 20px; // below header
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.layout {
+  display: flex;
+  flex: 1;
+  min-height: calc(100vh - 120px); // minus header + footer
+}
+.page-body {
+  flex: 1;
+  padding: 20px;
+  background-color: #fff;
+}

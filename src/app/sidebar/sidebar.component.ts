@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() { }
+  collapsed = false;
+
+  constructor() {}
 
   menuItems: string[] = [];
   role = localStorage.getItem('role');
@@ -17,16 +19,20 @@ export class SidebarComponent implements OnInit {
     this.loadMenu();
   }
 
-  getRoutePath(item: string): string {
-    return `/dashboard/${item.toLowerCase().replace(/\s+/g, '-')}`;
+  toggleSidebar(): void {
+    this.collapsed = !this.collapsed;
   }
-  
+
+  getRoutePath(item: string): string {
+    return `/${item.toLowerCase().replace(/\s+/g, '-')}`;
+  }
+
   loadMenu(): void {
     if (this.role === 'ROLE_USER') {
       if (this.websiteType === 'PORTFOLIO WEBSITE') {
-        this.menuItems = ['Dashboard', 'My Portfolio', 'Skills', 'Projects', 'Contact Info'];
+        this.menuItems = ['Dashboard', 'My Portfolio', 'services', 'Projects', 'About'];
       } else if (this.websiteType === 'SMART CONTACT') {
-        this.menuItems = ['Dashboard', 'Contacts', 'Groups', 'Settings'];
+        this.menuItems = ['Dashboard', 'Contacts', 'services', 'Settings','about'];
       }
     }
   }

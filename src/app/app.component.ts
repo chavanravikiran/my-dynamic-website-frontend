@@ -30,6 +30,10 @@ export class AppComponent implements OnInit{
   errorMessage: string | null = null;
   websiteType: WebSiteType = environment.websiteType;
 
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('token');
+  }
+  
   ngOnInit(): void {
     this.websideService.getWebsiteDetails(this.websiteType).subscribe({
       next: (response) => {

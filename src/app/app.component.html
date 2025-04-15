@@ -3,13 +3,36 @@
 <head>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
-<div class="container">
+<!-- <div class="container">
   <app-header></app-header>
   <div class="body-content">
     <div>
       <router-outlet></router-outlet>
+    </div>
+    <div>
+      <app-footer></app-footer>
+    </div>
   </div>
-  <div>
+</div> -->
+
+<div class="container">
+  <app-header></app-header>
+
+  <div class="main-content" *ngIf="isLoggedIn(); else loggedOutContent">
+    <div class="layout">
+      <app-sidebar></app-sidebar>
+      <div class="page-body">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #loggedOutContent>
+    <div class="content-full">
+      <router-outlet></router-outlet>
+    </div>
     <app-footer></app-footer>
-  </div>
+  </ng-template>
+
+  
 </div>

@@ -1,37 +1,4 @@
 
-//   app-menu {
-//   display: block;  // or some other styling to show the menu
-// }
-
-// /* Style for the close button */
-// .menu-close {
-//     font-size: 24px;
-//     cursor: pointer;
-//     padding: 10px;
-//     background-color: transparent;
-//     border: 2px solid #000; /* Border for the round shape */
-//     border-radius: 50%;
-//     color: #000;
-//     transition: all 0.3s ease;
-//   }
-  
-//   .menu-close:hover {
-//     background-color: #f44336; /* Red background on hover */
-//     color: white; /* White text on hover */
-//   }
-  
-//   /* Add a style for the round effect when clicked */
-//   .menu-close.round {
-//     border-radius: 50%;
-//     width: 30px;
-//     height: 30px;
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//     font-size: 16px;
-//     transition: width 0.3s, height 0.3s;
-//   }
-  
 .header-container {
   display: flex;
   justify-content: space-between;
@@ -136,23 +103,6 @@
   }
 }
 
-// .header-nav ul {
-//   display: flex;
-//   gap: 10px;
-//   list-style: none;
-//   margin: 0;
-//   padding: 0;
-// }
-
-// .header-nav li a {
-//   text-decoration: none;
-//   color: black;
-// }
-
-// .header-nav li.active a {
-//   font-weight: bold;
-//   color: #007bff; /* Highlight color */
-// }
 .header-nav ul {
   display: flex;
   gap: 10px;
