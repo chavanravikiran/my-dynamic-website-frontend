@@ -1,0 +1,50 @@
+.sidebar {
+    width: 220px;
+    background-color: #2f3542;
+    color: white;
+    height: 100vh;
+    padding: 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: all 0.3s ease;
+    z-index: 1000;
+  
+    .logo {
+      font-size: 20px;
+      margin-bottom: 1.5rem;
+      font-weight: bold;
+    }
+  
+    ul {
+      list-style: none;
+      padding: 0;
+  
+      li {
+        margin: 15px 0;
+  
+        a {
+          color: white;
+          text-decoration: none;
+  
+          &.active,
+          &:hover {
+            font-weight: bold;
+            color: #70a1ff;
+          }
+        }
+      }
+    }
+  
+    @media (max-width: 768px) {
+      position: relative;
+      width: 100%;
+      height: auto;
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+    }
+  }
+  

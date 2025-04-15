@@ -8,11 +8,13 @@ import { environment } from 'src/environments/environment';
 })
 export class AuthService {
   private apiUrl = environment.apiUrl + '/api/users';  // Example: http://localhost:8080/auth/login
-
+  private websiteType = environment.websiteType;
+  
   constructor(private http: HttpClient) {}
-
+  
   registration(registration: {name: string, username:string, email:string, phoneNumber: string, 
-        address: string, password: string}): Observable<any> {
+        address: string, password: string,websiteType?: string}): Observable<any> {
+          registration.websiteType = this.websiteType;
     return this.http.post<any>(`${this.apiUrl}/register`, registration);
   }
   

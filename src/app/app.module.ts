@@ -58,6 +58,9 @@ import { PortfolioComponent } from "./portfolio/portfolio.component";
 import { AuthInterceptor } from "./auth.interceptor";
 import { LoginComponent } from "./login/login.component";
 import { RegistrationComponent } from "./registration/registration.component";
+import { SidebarComponent } from "./sidebar/sidebar.component";
+import { DashboardComponent } from "./dashboard/dashboard.component";
+import { BreadcrumbComponent } from "./breadcrumb/breadcrumb.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -75,7 +78,9 @@ import { RegistrationComponent } from "./registration/registration.component";
     PortfolioComponent,
     LoginComponent,
     RegistrationComponent,
-    
+    SidebarComponent,
+    DashboardComponent,
+    BreadcrumbComponent
     ],
   imports: [
     BrowserModule,

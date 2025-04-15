@@ -15,6 +15,7 @@ import { PortfolioComponent } from "./portfolio/portfolio.component";
 import { LoginComponent } from "./login/login.component";
 import { AuthGuard } from "./auth.guard";
 import { RegistrationComponent } from "./registration/registration.component";
+import { DashboardComponent } from "./dashboard/dashboard.component";
 
 
 const routes: Routes = [
@@ -37,6 +38,19 @@ const routes: Routes = [
     path: "appointment",
     children: [],
   },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    canActivate: [AuthGuard],
+    children: [
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: 'home', component: HomeComponent },
+      { path: 'my-portfolio', component: PortfolioComponent },
+      // { path: 'skills', component: SkillsComponent },
+      // { path: 'projects', component: ProjectsComponent },
+      { path: 'contact-info', component: ContactUsComponent },
+    ]
+  }
 ];
 
 @NgModule({
