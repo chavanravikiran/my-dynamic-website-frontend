@@ -1,58 +1,79 @@
-// App.component.scss
 .container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Full viewport height */
+  height: 100vh;
 }
 
 app-header {
-  position: fixed; /* Fix the header at the top */
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000; /* Keep the header above other elements */
-  height: 50px; /* Set the exact height of the header */
-}
-
-.body-content {
-  flex: 1;
-  margin-top: 60px;
-}
-
-.app-footer {
-  background: #f8f9fa; /* Footer background color */
-  position: relative;  /* Make sure footer is part of normal layout flow */
-  z-index: 1000;         /* Ensure footer is below the slider */
-}
-
-.dashboard-wrapper {
-  display: flex;
-  width: 100%;
-}
-
-.dashboard-content {
-  flex-grow: 1;
-  padding: 15px;
-
-  @media (max-width: 768px) {
-    margin-left: 0;
-  }
+  height: 60px;
+  z-index: 1000;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .main-content {
-  margin-top: 10px; // below header
-  margin-left: 20px; // below header
-  flex: 1;
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
+  margin-top: 60px; // space below fixed header
+  height: calc(100vh - 60px - 60px); // minus header + footer height
 }
+
 .layout {
   display: flex;
-  flex: 1;
-  min-height: calc(100vh - 120px); // minus header + footer
+  flex-grow: 1;
+  // overflow: hidden;
 }
+
+app-sidebar {
+  // width: 240px;
+  // min-width: 240px;
+  height: 100%;
+  background: #fff;
+  border-right: 1px solid #ddd;
+}
+
 .page-body {
-  flex: 1;
-  padding: 20px;
-  background-color: #fff;
+  flex-grow: 1;
+  // padding: 20px;
+  height: 100%;
+}
+
+.page-body-login {
+  flex-grow: 1;
+  // padding: 20px;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.full-width {
+  width: 100%;
+  // padding: 20px;
+}
+
+app-footer {
+  height: 60px;
+  background: #f8f9fa;
+  border-top: 1px solid #ddd;
+  text-align: center;
+  line-height: 60px;
+}
+
+.page-body.collapsed {
+  margin-left: 60px; // or reduced padding
+}
+.page-body-login {
+  flex-grow: 1;
+  overflow-y: auto;
+  height: 100%;
+  margin-left: 180px; // Match full sidebar width by default
+  transition: margin-left 0.3s ease;
+
+  &.collapsed {
+    margin-left: 60px; // When sidebar is collapsed
+  }
 }

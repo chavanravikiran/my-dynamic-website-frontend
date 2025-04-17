@@ -12,7 +12,10 @@
     </ul>
   </nav>
   <nav class="header-nav" *ngIf="isLoggedIn()">
-    <button (click)="logout()" class="logout-btn">Logout</button>
+    <!-- <button (click)="logout()" class="logout-btn">Logout</button> -->
+    <div class="logout-circle" (click)="logout()">
+      <img src="assets/images/black_face.jpg" alt="User" />
+    </div>
   </nav>
 </div>
   

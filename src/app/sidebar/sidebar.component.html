@@ -1,11 +1,3 @@
-<!-- <nav class="sidebar">
-  <div class="logo">User Panel</div>
-  <ul>
-    <li *ngFor="let item of menuItems">
-        <a [routerLink]="getRoutePath(item)" routerLinkActive="active">{{ item }}</a>
-    </li>
-  </ul>
-</nav> -->
 <nav class="sidebar" [class.collapsed]="collapsed">
   <div class="sidebar-header">
     <div class="logo">{{ collapsed ? 'Menu' : 'User Panel' }}</div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar',
@@ -19,8 +19,14 @@ export class SidebarComponent implements OnInit {
     this.loadMenu();
   }
 
-  toggleSidebar(): void {
+  // toggleSidebar(): void {
+  //   this.collapsed = !this.collapsed;
+  // }
+  @Output() collapsedChange = new EventEmitter<boolean>();
+
+  toggleSidebar() {
     this.collapsed = !this.collapsed;
+    this.collapsedChange.emit(this.collapsed);
   }
 
   getRoutePath(item: string): string {
@@ -30,7 +36,7 @@ export class SidebarComponent implements OnInit {
   loadMenu(): void {
     if (this.role === 'ROLE_USER') {
       if (this.websiteType === 'PORTFOLIO WEBSITE') {
-        this.menuItems = ['Dashboard', 'My Portfolio', 'services', 'Projects', 'About'];
+        this.menuItems = ['Dashboard', 'portfolio', 'services', 'Projects', 'About'];
       } else if (this.websiteType === 'SMART CONTACT') {
         this.menuItems = ['Dashboard', 'Contacts', 'services', 'Settings','about'];
       }

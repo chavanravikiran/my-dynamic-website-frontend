@@ -30,10 +30,16 @@ export class AppComponent implements OnInit{
   errorMessage: string | null = null;
   websiteType: WebSiteType = environment.websiteType;
 
+  isSidebarCollapsed = false;
+
+  handleSidebarToggle(collapsed: boolean) {
+    this.isSidebarCollapsed = collapsed;
+  }
+
   isLoggedIn(): boolean {
     return !!localStorage.getItem('token');
   }
-  
+
   ngOnInit(): void {
     this.websideService.getWebsiteDetails(this.websiteType).subscribe({
       next: (response) => {

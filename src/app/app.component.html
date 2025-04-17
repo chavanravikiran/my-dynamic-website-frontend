@@ -1,38 +1,21 @@
 
-<!--App.component.html-->
-<head>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-</head>
-<!-- <div class="container">
-  <app-header></app-header>
-  <div class="body-content">
-    <div>
-      <router-outlet></router-outlet>
-    </div>
-    <div>
-      <app-footer></app-footer>
-    </div>
-  </div>
-</div> -->
-
 <div class="container">
   <app-header></app-header>
-
   <div class="main-content" *ngIf="isLoggedIn(); else loggedOutContent">
     <div class="layout">
-      <app-sidebar></app-sidebar>
-      <div class="page-body">
+      <app-sidebar (collapsedChange)="handleSidebarToggle($event)"></app-sidebar>
+      <div class="page-body-login" [ngClass]="{ 'collapsed': isSidebarCollapsed }">
         <router-outlet></router-outlet>
       </div>
     </div>
   </div>
 
   <ng-template #loggedOutContent>
-    <div class="content-full">
-      <router-outlet></router-outlet>
+    <div class="layout no-sidebar">
+      <div class="page-body full-width">
+        <router-outlet></router-outlet>
+      </div>
     </div>
     <app-footer></app-footer>
   </ng-template>
-
-  
 </div>

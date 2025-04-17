@@ -19,7 +19,8 @@ export class AuthService {
   }
   
 
-  login(credentials: { username: string; password: string }): Observable<any> {
+  login(credentials: { username: string; password: string ,websiteType?: string}): Observable<any> {
+    credentials.websiteType = this.websiteType
     return this.http.post<any>(`${this.apiUrl}/login`,credentials)
   }
 
@@ -34,7 +35,7 @@ export class AuthService {
     const token = localStorage.getItem('token');
     return token && token !== 'null' && token !== 'undefined' ? token : null;
   }
-  
+
   logout(): void {
     localStorage.removeItem('token');
   }
