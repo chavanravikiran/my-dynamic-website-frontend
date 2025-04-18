@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { CustomSnackbarComponent } from '../shared/custom-snackbar/custom-snackbar.component';
+import { CustomSnackbarComponent } from '../custom-snackbar/custom-snackbar.component';
 declare var particlesJS: any;
 
 @Component({

@@ -27,10 +27,7 @@ export class AuthService {
   isLoggedIn(): boolean {
     return !!localStorage.getItem('token');
   }
-
-  // getToken(): string | null {
-  //   return localStorage.getItem('token');
-  // }
+  
   getToken(): string | null {
     const token = localStorage.getItem('token');
     return token && token !== 'null' && token !== 'undefined' ? token : null;
@@ -38,5 +35,13 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem('token');
+  }
+  
+  forgotPassword(email: string) {
+    return this.http.post(`${this.apiUrl}/forgot-password`, { email });
+  }
+
+  resetPassword(token: string, newPassword: string) {
+    return this.http.post(`${this.apiUrl}/reset-password`, { token, newPassword });
   }
 }

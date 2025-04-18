@@ -61,7 +61,9 @@ import { RegistrationComponent } from "./registration/registration.component";
 import { SidebarComponent } from "./sidebar/sidebar.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { BreadcrumbComponent } from "./breadcrumb/breadcrumb.component";
-import { CustomSnackbarComponent } from "./shared/custom-snackbar/custom-snackbar.component";
+import { CustomSnackbarComponent } from "./custom-snackbar/custom-snackbar.component";
+import { ResetPasswordComponent } from "./reset-password/reset-password.component";
+import { ForgotPasswordComponent } from "./forgot-password/forgot-password.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -82,7 +84,10 @@ import { CustomSnackbarComponent } from "./shared/custom-snackbar/custom-snackba
     SidebarComponent,
     DashboardComponent,
     BreadcrumbComponent,
-    CustomSnackbarComponent
+    CustomSnackbarComponent,
+    ResetPasswordComponent,
+    ForgotPasswordComponent
+    
     ],
   imports: [
     BrowserModule,
