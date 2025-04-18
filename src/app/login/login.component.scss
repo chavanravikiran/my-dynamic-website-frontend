@@ -27,7 +27,6 @@ $glass-border: rgba(255, 255, 255, 0.3);
 .login-container {
   display: flex;
   min-height: 100vh;
-  width: 100%;
   background: $background-gradient;
   background-size: 400% 400%;
   animation: backgroundAnimation 10s ease infinite;

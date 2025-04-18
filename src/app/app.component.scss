@@ -26,12 +26,9 @@ app-header {
 .layout {
   display: flex;
   flex-grow: 1;
-  // overflow: hidden;
 }
 
 app-sidebar {
-  // width: 240px;
-  // min-width: 240px;
   height: 100%;
   background: #fff;
   border-right: 1px solid #ddd;
@@ -39,21 +36,18 @@ app-sidebar {
 
 .page-body {
   flex-grow: 1;
-  // padding: 20px;
   height: 100%;
-  margin-top: 60px;
+  margin-top: 40px;
 }
 
 .page-body-login {
   flex-grow: 1;
-  // padding: 20px;
   overflow-y: auto;
   height: 100%;
 }
 
 .full-width {
   width: 100%;
-  // padding: 20px;
 }
 
 app-footer {
