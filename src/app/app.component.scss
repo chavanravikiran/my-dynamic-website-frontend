@@ -41,6 +41,7 @@ app-sidebar {
   flex-grow: 1;
   // padding: 20px;
   height: 100%;
+  margin-top: 60px;
 }
 
 .page-body-login {
@@ -77,3 +78,4 @@ app-footer {
     margin-left: 60px; // When sidebar is collapsed
   }
 }
+

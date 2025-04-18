@@ -1,7 +1,6 @@
 <!-- footer.component.html -->
 <footer class="footer" [class.visible]="isFooterVisible">
   <div class="footer-content">
-
     <!-- 🏢 Address Section -->
     <div class="footer-section contact-us" *ngIf="contactUsResponse">
       <h4>Head Offices</h4>
@@ -37,6 +36,11 @@
     <div class="footer-section google-map">
       <app-google-map></app-google-map>
     </div>
-
+  </div>
+   <!-- 🚗 GIF animations inside footer only -->
+   <div class="footer_bg">
+    <div class="footer_bg_one"></div> <!-- Car -->
+    <div class="footer_bg_two"></div> <!-- Cyclist -->
   </div>
 </footer>
+
