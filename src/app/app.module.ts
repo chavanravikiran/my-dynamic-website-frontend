@@ -61,6 +61,7 @@ import { RegistrationComponent } from "./registration/registration.component";
 import { SidebarComponent } from "./sidebar/sidebar.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { BreadcrumbComponent } from "./breadcrumb/breadcrumb.component";
+import { CustomSnackbarComponent } from "./shared/custom-snackbar/custom-snackbar.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -80,7 +81,8 @@ import { BreadcrumbComponent } from "./breadcrumb/breadcrumb.component";
     RegistrationComponent,
     SidebarComponent,
     DashboardComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    CustomSnackbarComponent
     ],
   imports: [
     BrowserModule,

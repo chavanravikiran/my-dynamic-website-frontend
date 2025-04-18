@@ -169,3 +169,13 @@ $glass-border: rgba(255, 255, 255, 0.3);
     display: flex;
     justify-content: center;
 }
+
+::ng-deep .snackbar-success {
+    background-color: #4caf50; // Green
+    color: white;
+  }
+  
+  ::ng-deep .snackbar-error {
+    background-color: #f44336; // Red
+    color: white;
+  }

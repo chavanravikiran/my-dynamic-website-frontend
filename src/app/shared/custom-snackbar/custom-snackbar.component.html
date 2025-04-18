@@ -1,0 +1,6 @@
+<div class="custom-snackbar" [ngClass]="data.type">
+  <mat-icon class="icon">
+    {{ data.type === 'success' ? 'Success' : 'Error' }}
+  </mat-icon>
+  <span class="message">{{ data.message }}</span>
+</div>

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { CustomSnackbarComponent } from '../shared/custom-snackbar/custom-snackbar.component';
 declare var particlesJS: any;
 
 @Component({
@@ -14,7 +16,11 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   errorMessage: string = '';
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {}
+  constructor(private fb: FormBuilder, 
+    private authService: AuthService, 
+    private router: Router,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -35,15 +41,26 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('userName', response.userName);
 
           this.router.navigate(['/dashboard']);
+          this.showMessage(response.successMsg,'success');
         },
         error: (err) => {
           console.error('Login error:', err);
           this.errorMessage = 'Invalid username or password';
+          this.showMessage(this.errorMessage, 'error');
         }
       });
     } else {
-      this.errorMessage = 'Please fill in all fields correctly.';
+      this.errorMessage = 'Invalid username or password';
+      this.showMessage(this.errorMessage, 'error');
     }
   }
-  
+  showMessage(message: string, type: 'success' | 'error') {
+    this.snackBar.openFromComponent(CustomSnackbarComponent, {
+      data: { message, type },
+      duration: 3000,
+      horizontalPosition: 'right',
+      verticalPosition: 'top',
+      panelClass: ['custom-snackbar-container']
+    });
+  }
 }
