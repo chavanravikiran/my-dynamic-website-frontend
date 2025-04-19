@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { MessageResponse } from './appointment/models/message-response';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +28,7 @@ export class AuthService {
   isLoggedIn(): boolean {
     return !!localStorage.getItem('token');
   }
-  
+
   getToken(): string | null {
     const token = localStorage.getItem('token');
     return token && token !== 'null' && token !== 'undefined' ? token : null;
@@ -38,7 +39,7 @@ export class AuthService {
   }
   
   forgotPassword(email: string) {
-    return this.http.post(`${this.apiUrl}/forgot-password`, { email });
+    return this.http.post<MessageResponse>(`${this.apiUrl}/forgot-password`, { email });
   }
 
   resetPassword(token: string, newPassword: string) {

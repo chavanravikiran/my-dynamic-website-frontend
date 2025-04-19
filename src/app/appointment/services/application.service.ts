@@ -13,8 +13,11 @@ import { WebsiteLatLongResponse } from "../models/website-lat-long";
 import { contactUsResponse } from "../models/contact-us-response";
 import { GalleryResponse } from "../models/gallery-response";
 import { PortfolioModel } from "../models/portfolio-model";
+import { environment } from "src/environments/environment";
+import { FeatureMenu } from "../models/featureMenu-response";
 
-export const api_url = "http://localhost:8280"; // dev
+// export const api_url = "http://localhost:8280"; // dev
+export const apiUrl = environment.apiUrl;
 @Injectable({
   providedIn: "root", 
 })
@@ -63,31 +66,36 @@ export class ApplicationService {
   }
 
   getWebsiteDetails(websiteType:string): Observable<WebsiteResponse> {
-    return this.http.get<WebsiteResponse>(api_url+ "/openApi/"+websiteType);
+    return this.http.get<WebsiteResponse>(apiUrl+ "/openApi/"+websiteType);
   }
 
   getServices(websiteType: string): Observable<ServiceResponseDTO[]> {
-    return this.http.get<ServiceResponseDTO[]>(api_url+"/openApi/fetchService/"+websiteType);
+    return this.http.get<ServiceResponseDTO[]>(apiUrl+"/openApi/fetchService/"+websiteType);
   }
 
   getGalleryData(websiteType: string): Observable<GalleryResponse> {
-    return this.http.get<GalleryResponse>(`${api_url}/openApiGallery/fetchGallery/${websiteType}`);
+    return this.http.get<GalleryResponse>(`${apiUrl}/openApiGallery/fetchGallery/${websiteType}`);
   }
   
   getFollowUsData(websiteType: string): Observable<followUsResponse> {
-    return this.http.get<followUsResponse>(`${api_url}/openApiForFollowUs/fetchFollowUs/${websiteType}`);
+    return this.http.get<followUsResponse>(`${apiUrl}/openApiForFollowUs/fetchFollowUs/${websiteType}`);
   }
 
   //TODO
   getLatLongAndContactUs(websiteType:string): Observable<WebsiteLatLongResponse> {
-    return this.http.get<WebsiteLatLongResponse>(api_url+ "/openApiForFollowUs/fetchLocation/"+websiteType);
+    return this.http.get<WebsiteLatLongResponse>(apiUrl+ "/openApiForFollowUs/fetchLocation/"+websiteType);
   }
 
   getOfficesByWebsite(websiteType: string): Observable<contactUsResponse> {
-    return this.http.get<contactUsResponse>(api_url+ "/api/contact-us/"+websiteType);
+    return this.http.get<contactUsResponse>(apiUrl+ "/api/contact-us/"+websiteType);
   }
 
   getStudentPortfolio(websiteType: string): Observable<PortfolioModel> {
-    return this.http.get<PortfolioModel>(api_url+ "/api/student/"+websiteType);
+    return this.http.get<PortfolioModel>(apiUrl+ "/api/student/"+websiteType);
+  }
+  
+  //Fetch FeatureRoleWise Website Wise
+  getUserFeatures(userId: number): Observable<FeatureMenu[]> {
+    return this.http.get<FeatureMenu[]>(`${apiUrl}/api/websiteRoleUserFeature/${userId}`);
   }
 }

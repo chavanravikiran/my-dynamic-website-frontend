@@ -27,22 +27,44 @@ export class ForgotPasswordComponent implements OnInit {
     });
   }
 
+  // onSubmit() {
+  //   if (this.forgotPasswordForm.valid) {
+  //     this.loading = true; // Start loader
+  //     this.authService.forgotPassword(this.forgotPasswordForm.value.email).subscribe({
+  //       next: (response) => {
+  //         this.loading = false; // Stop loader
+  //         this.showMessage('Reset link sent to your email', 'success');
+  //       },
+  //       error: (response) => {
+  //         this.loading = false; // Stop loader
+  //         this.showMessage(response.errorMessage, response.status);
+  //       }
+  //     });
+  //   }
+  // }
   onSubmit() {
     if (this.forgotPasswordForm.valid) {
-      this.loading = true; // Start loader
+      this.loading = true;
+  
       this.authService.forgotPassword(this.forgotPasswordForm.value.email).subscribe({
-        next: () => {
-          this.loading = false; // Stop loader
-          this.showMessage('Reset link sent to your email', 'success');
+        next: (response) => {
+          this.loading = false;
+  
+          if (response.status === 'SUCCESS' && response.success) {
+            this.showMessage(response.successMsg || 'Reset link sent to your email', 'success');
+          } else {
+            this.showMessage(response.errorMessage || 'Something went wrong', 'error');
+          }
         },
-        error: () => {
-          this.loading = false; // Stop loader
-          this.showMessage('Failed to send reset link', 'error');
+        error: (error) => {
+          this.loading = false;
+          const message = error?.error?.errorMessage || 'Server error. Please try again.';
+          this.showMessage(message, 'error');
         }
       });
     }
   }
-
+  
   showMessage(message: string, type: 'success' | 'error') {
     this.snackBar.openFromComponent(CustomSnackbarComponent, {
       data: { message, type },

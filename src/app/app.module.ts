@@ -59,7 +59,7 @@ import { AuthInterceptor } from "./auth.interceptor";
 import { LoginComponent } from "./login/login.component";
 import { RegistrationComponent } from "./registration/registration.component";
 import { SidebarComponent } from "./sidebar/sidebar.component";
-import { DashboardComponent } from "./dashboard/dashboard.component";
+import { LandingComponent } from "./landing/landing.component";
 import { BreadcrumbComponent } from "./breadcrumb/breadcrumb.component";
 import { CustomSnackbarComponent } from "./custom-snackbar/custom-snackbar.component";
 import { ResetPasswordComponent } from "./reset-password/reset-password.component";
@@ -82,7 +82,7 @@ import { ForgotPasswordComponent } from "./forgot-password/forgot-password.compo
     LoginComponent,
     RegistrationComponent,
     SidebarComponent,
-    DashboardComponent,
+    LandingComponent,
     BreadcrumbComponent,
     CustomSnackbarComponent,
     ResetPasswordComponent,

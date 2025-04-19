@@ -7,6 +7,9 @@
   </div>
 
   <ul *ngIf="!collapsed">
+    <!-- <li *ngFor="let item of menuItems">
+      <a [routerLink]="getRoutePath(item)" routerLinkActive="active">{{ item }}</a>
+    </li> -->
     <li *ngFor="let item of menuItems">
       <a [routerLink]="getRoutePath(item)" routerLinkActive="active">{{ item }}</a>
     </li>

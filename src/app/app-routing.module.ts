@@ -15,7 +15,7 @@ import { PortfolioComponent } from "./portfolio/portfolio.component";
 import { LoginComponent } from "./login/login.component";
 import { AuthGuard } from "./auth.guard";
 import { RegistrationComponent } from "./registration/registration.component";
-import { DashboardComponent } from "./dashboard/dashboard.component";
+import { LandingComponent } from "./landing/landing.component";
 import { ForgotPasswordComponent } from "./forgot-password/forgot-password.component";
 import { ResetPasswordComponent } from "./reset-password/reset-password.component";
 
@@ -43,8 +43,8 @@ const routes: Routes = [
     children: [],
   },
   {
-    path: 'dashboard',
-    component: DashboardComponent,
+    path: 'landing',
+    component: LandingComponent,
     canActivate: [AuthGuard],
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },

@@ -39,8 +39,9 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('role', response.roles[0]);
           localStorage.setItem('websiteType', response.websiteType);
           localStorage.setItem('userName', response.userName);
-
-          this.router.navigate(['/dashboard']);
+          localStorage.setItem('userId', response.userId);
+          
+          this.router.navigate(['/landing']);
           this.showMessage(response.successMsg,'success');
         },
         error: (err) => {
