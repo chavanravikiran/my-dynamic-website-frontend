@@ -64,6 +64,7 @@ import { BreadcrumbComponent } from "./breadcrumb/breadcrumb.component";
 import { CustomSnackbarComponent } from "./custom-snackbar/custom-snackbar.component";
 import { ResetPasswordComponent } from "./reset-password/reset-password.component";
 import { ForgotPasswordComponent } from "./forgot-password/forgot-password.component";
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 @NgModule({
   declarations: [
     AppComponent,
@@ -128,6 +129,7 @@ import { ForgotPasswordComponent } from "./forgot-password/forgot-password.compo
     TranslocoModule,
     CommonModule,
     GoogleMapsModule,
+    FontAwesomeModule
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

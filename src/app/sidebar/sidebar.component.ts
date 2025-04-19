@@ -1,5 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ApplicationService } from '../appointment/services/application.service';
+import { faCircle, faHome, faServer, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { faQuestionCircle, faConciergeBell } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-sidebar',
@@ -10,18 +12,16 @@ export class SidebarComponent implements OnInit {
   
   @Output() collapsedChange = new EventEmitter<boolean>();
   collapsed = false;
-
+  // faHome = faHome;
+  
   constructor(private websideService: ApplicationService) {}
-
-  menuItems: string[] = [];
+  
+  menuItems: any[] = [];
+  menuIcon: string[] = [];
   role = localStorage.getItem('role');
   websiteType = localStorage.getItem('websiteType');
   userId = localStorage.getItem('userId');
   
-
-  // ngOnInit(): void {
-  //   this.loadMenu();
-  // }
   ngOnInit(): void {
     // delay the execution to wait for localStorage to be set
     setTimeout(() => {
@@ -53,7 +53,7 @@ export class SidebarComponent implements OnInit {
     if (this.userId) {
       this.websideService.getUserFeatures(+this.userId).subscribe({
         next: (features) => {
-          this.menuItems = features.map(f => f.featureName);
+          this.menuItems = features.sort((a, b) => a.displaySeq - b.displaySeq);
         },
         error: (err) => {
           console.error('Failed to fetch features', err);
