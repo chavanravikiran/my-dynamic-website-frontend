@@ -18,6 +18,7 @@ import { FeatureMenu } from "../models/featureMenu-response";
 
 // export const api_url = "http://localhost:8280"; // dev
 export const apiUrl = environment.apiUrl;
+ const websiteTypes=environment.websiteType;
 @Injectable({
   providedIn: "root", 
 })
@@ -98,4 +99,5 @@ export class ApplicationService {
   getUserFeatures(userId: number): Observable<FeatureMenu[]> {
     return this.http.get<FeatureMenu[]>(`${apiUrl}/api/websiteRoleUserFeature/${userId}`);
   }
+
 }
