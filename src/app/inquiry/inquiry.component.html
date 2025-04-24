@@ -36,7 +36,7 @@
 
   <mat-form-field class="form-group" appearance="fill">
     <mat-label>phone </mat-label>
-    <input matInput formControlName="phone" required />
+    <input matInput formControlName="phone" required (keypress)="numberOnly($event)" maxlength="10"/>
     <mat-error *ngIf="inquiryForm.get('phone')?.hasError('required')">
       phone is required
     </mat-error>

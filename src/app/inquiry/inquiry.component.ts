@@ -27,7 +27,7 @@ export class InquiryComponent implements  OnInit{
       lastName: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [ Validators.pattern('^[0-9]{10}$')]],
-      title:['', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
+      title:['', [Validators.required]],
       message: ['', [Validators.required, Validators.minLength(10)]],
     });
 
@@ -37,6 +37,11 @@ export class InquiryComponent implements  OnInit{
       this.authService.submitInquiry(this.inquiryForm.value).subscribe({
         next: (response) => {
           this.inquiryForm.reset();
+          Object.keys(this.inquiryForm.controls).forEach(key => {
+            this.inquiryForm.get(key)?.setErrors(null); // Clear any lingering errors
+            this.inquiryForm.get(key)?.markAsPristine();
+            this.inquiryForm.get(key)?.markAsUntouched();
+          });
           this.authService.showMessage(response.successMsg,'success');
         },
         error: (response) => {
@@ -47,5 +52,15 @@ export class InquiryComponent implements  OnInit{
       this.inquiryForm.markAllAsTouched();
     }
 
+  }
+
+  
+  
+  numberOnly(event: any) {
+    const charCode = event.which ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
+    }
+    return true;
   }
 }
