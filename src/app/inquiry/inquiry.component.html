@@ -35,6 +35,17 @@
   </mat-form-field>
 
   <mat-form-field class="form-group" appearance="fill">
+    <mat-label>phone </mat-label>
+    <input matInput formControlName="phone" required />
+    <mat-error *ngIf="inquiryForm.get('phone')?.hasError('required')">
+      phone is required
+    </mat-error>
+    <mat-error *ngIf="inquiryForm.get('phone')?.hasError('phone')">
+      phone email format
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="form-group" appearance="fill">
     <mat-label>Title *</mat-label>
     <input matInput formControlName="title" required />
     <mat-error *ngIf="inquiryForm.get('title')?.hasError('required')">
