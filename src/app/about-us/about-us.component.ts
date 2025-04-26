@@ -14,8 +14,6 @@ export class AboutUsComponent implements OnInit{
   clonedTeam: any[] = []; // Cloned elements for infinite scroll
 
   ngOnInit() {
-    // this.team = this.getTeamMembers();
-    // this.clonedTeam = [...this.team, ...this.team]; // Duplicate the team members
     this.team = this.getTeamMembers();
     this.checkScreenSize();
     this.autoScroll();
