@@ -1,0 +1,106 @@
+<div class="downloadPosition">
+  <button mat-raised-button class="custom-download-btn" (click)="downloadPDF()">
+    <mat-icon>download</mat-icon>
+  </button>
+</div>
+<div class="portfolio-container" *ngIf="portfolio">
+  <div class="header">
+    <img [src]="portfolio.selfPhoto ? 'data:image/png;base64,' + portfolio.selfPhoto : 'assets/images/black_face.jpg'" alt="Student Photo">
+    <h2>{{ portfolio.studentName }}</h2>
+    <p>Age: {{ portfolio.age }}</p>
+    <p>Website: {{ portfolio.websiteName }}</p>
+  </div>
+
+  <!-- Academic Details -->
+  <div class="section">
+    <h3>Academic Details</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Degree</th>
+          <th>Institution</th>
+          <th>Passing Year</th>
+          <th>Percentage</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let academic of portfolio.academicDetail">
+          <td>{{ academic.degree }}</td>
+          <td>{{ academic.institution }}</td>
+          <td>{{ academic.passingYear | date:'yyyy' }}</td>
+          <td>{{ academic.percentage }}%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Projects -->
+  <div class="section">
+    <h3>Academic Projects</h3>
+    <ul>
+      <li *ngFor="let project of portfolio.project">
+        <strong>{{ project.projectName }}</strong>:
+        <ul>
+          <li *ngFor="let point of project.description.split('\\n')">{{ point }}</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="">
+    <h3>EXPERIENCE</h3>
+    <ul class="experience-list">
+      <li *ngFor="let experience of portfolio.experiences" class="experience-item">
+       
+        <div class="projects">
+          <div *ngFor="let project of experience.projects" class="project-card">
+            <h4>{{ project.projectName }}</h4>
+            <div class="experience-header">
+              <strong>{{ experience.companyName }}</strong>
+              <span class="experience-dates">
+                {{ experience.startDateOnWorkingProject | date:'MMM yyyy' }} - 
+                {{ experience.endDateOnWorkingProject ? (experience.endDateOnWorkingProject | date:'MMM yyyy') : 'Till Date' }}
+              </span>
+            </div>
+            <hr class="double-line" />
+            <p class="tech-stack"><strong>Technology Used:</strong> {{ experience.technology }}</p>
+            <div class="description">
+              <ul>
+                <li *ngFor="let point of project.description.split('\\n')">
+                  {{ point }}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  
+
+  <!-- Skills -->
+  <div class="section">
+    <h3>Skills</h3>
+    <ul>
+      <li *ngFor="let skill of portfolio.skill">
+        <strong>{{ skill.skillName }}</strong> ({{ skill.proficiencyLevel }}) - 
+        <div class="progress-bar">
+          <div class="progress" [style.width.%]="skill.percentage" [style.background]="getSkillColor(+skill.percentage)"></div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Language Proficiency -->
+  <div class="section">
+    <h3>Languages</h3>
+    <div *ngFor="let lang of portfolio.language">
+      <strong>{{ lang.languageName }}</strong>
+      <div class="progress-bar">
+        <div class="progress" [style.width.%]="calculateLanguageProficiency(lang)" [style.background]="getLanguageColor(calculateLanguageProficiency(lang))">
+          {{ calculateLanguageProficiency(lang) }}%
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

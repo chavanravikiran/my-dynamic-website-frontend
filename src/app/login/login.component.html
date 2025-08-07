@@ -1,0 +1,45 @@
+<div class="login-container">
+  <div class="glass-card">
+    <div class="login-form-container">
+      <div class="login-form-content">
+        <h2 class="login-title">Welcome Back</h2>
+
+        <!-- <form class="login-form"> -->
+          <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="username" id="username" placeholder="Enter your username" formControlName="username" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter your password" formControlName="password" required>
+          </div>
+
+          <div class="form-options">
+            <div style="padding-bottom:15px;">
+              <!-- <a href="#" class="forgot-password">Forgot Password?</a> -->
+              <a [routerLink]="['/forgot-password']" class="forgot-password">Forgot Password?</a>
+              </div>
+            <div style="padding-bottom:15px;">
+              <button type="submit" class="btn-primary">Sign in</button>
+            </div>
+          </div>      
+
+          <div class="google-class">
+            <button type="button" class="btn-google">
+              <svg class="google-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48">
+                <path fill="#4285F4" d="M23.49 12.27c2.56 0 4.88.88 6.7 2.6l4.95-4.95c-2.94-2.8-6.71-4.54-11.65-4.54-9.02 0-16.56 6.1-19.29 14.31l5.74 4.45c1.49-4.74 5.8-8.15 10.56-8.15Z"/>
+                <path fill="#34A853" d="M23.49 42c5.2 0 9.55-1.71 12.74-4.66l-5.83-4.56c-1.64 1.12-3.7 1.79-6.2 1.79-4.85 0-8.95-3.23-10.38-7.59l-5.64 4.42C11.14 37.12 16.69 42 23.49 42Z"/>
+                <path fill="#FBBC05" d="M42 24.54c0-1.41-.14-2.74-.4-4h-17.7v7.86h10.08c-.47 2.36-1.83 4.35-3.78 5.75l5.83 4.56C39.64 34.84 42 30.1 42 24.54Z"/>
+                <path fill="#EA4335" d="M7.31 14.96c-.92 1.89-1.43 4.02-1.43 6.3 0 2.26.51 4.38 1.43 6.3l5.64-4.42c-.32-.97-.5-2.01-.5-3.07 0-1.06.18-2.1.5-3.07l-5.64-4.42Z"/>
+              </svg>
+              Sign in with Google
+            </button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

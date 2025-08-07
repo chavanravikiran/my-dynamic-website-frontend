@@ -1,0 +1,7 @@
+<section class="dashboard">
+    <div class="dashboard-card" *ngFor="let data of dashboardData">
+        <h1 class="count" [ngClass]="'count-' + data.id">{{ counts[data.id] }}</h1>
+        <h3>{{ data.title }}</h3>
+        <p>{{ data.subtitle }}</p>
+    </div>
+  </section>

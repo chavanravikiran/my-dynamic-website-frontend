@@ -1,0 +1,22 @@
+
+
+<div class="container">
+  <app-header></app-header>
+  <div class="main-content" *ngIf="isLoggedIn(); else loggedOutContent">
+    <div class="layout">
+      <app-sidebar (collapsedChange)="handleSidebarToggle($event)"></app-sidebar>
+      <div class="page-body-login" [ngClass]="{ 'collapsed': isSidebarCollapsed }">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #loggedOutContent>
+    <div class="layout no-sidebar">
+      <div class="page-body full-width">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+    <app-footer></app-footer>
+  </ng-template>
+</div>

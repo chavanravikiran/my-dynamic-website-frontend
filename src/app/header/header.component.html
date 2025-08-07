@@ -1,0 +1,23 @@
+<div class="header-container">
+  <div class="brand-logo" (click)="navigateToHome()">
+    <!-- <img [src] = "'assets/images/'+websiteDetails?.websiteLogo" alt="Brand Logo" /> -->
+    <img *ngIf="websiteDetails?.websiteLogo" [src]="websiteDetails?.websiteLogo" alt="Brand Logo" />
+    <span class="brand-name">{{websiteDetails?.websiteName}}</span>
+  </div>
+  <nav class="header-nav" *ngIf="!isLoggedIn()">
+    <ul>
+      <li *ngFor="let link of navLinks">
+        <a [routerLink]="link.path">{{ link.name }}</a>
+      </li>
+    </ul>
+  </nav>
+  <nav class="header-nav" *ngIf="isLoggedIn()">
+    <!-- <button (click)="logout()" class="logout-btn">Logout</button> -->
+    <div class="logout-circle" (click)="logout()">
+      <img src="assets/images/black_face.jpg" alt="User" />
+    </div>
+  </nav>
+</div>
+  
+
+   

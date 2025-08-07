@@ -1,0 +1,46 @@
+<!-- footer.component.html -->
+<footer class="footer" [class.visible]="isFooterVisible">
+  <div class="footer-content">
+    <!-- 🏢 Address Section -->
+    <div class="footer-section contact-us" *ngIf="contactUsResponse">
+      <h4>Head Offices</h4>
+      <p><strong>{{ contactUsResponse.headOfficeName }}</strong></p>
+      <p>Address: {{ contactUsResponse.headOfficeAddress }}</p>
+      <p>Email: <a [href]="'mailto:' + contactUsResponse.headOfficeEmail">{{ contactUsResponse.headOfficeEmail }}</a></p>
+      <p>Phone: <a [href]="'tel:' + contactUsResponse.headOfficePhone">{{ contactUsResponse.headOfficePhone }}</a></p>
+
+      <!-- Sub Offices -->
+      <div *ngIf="contactUsResponse?.subOffices?.length > 0">
+        <h4>Sub Offices</h4>
+        <div *ngFor="let office of contactUsResponse.subOffices">
+          <p><strong>{{ office.officeName }}</strong></p>
+          <p>Address: {{ office.address }}</p>
+          <p>Email: <a [href]="'mailto:' + office.email">{{ office.email }}</a></p>
+          <p>Phone: <a [href]="'tel:' + office.phoneNumber">{{ office.phoneNumber }}</a></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 📱 Social Media Section -->
+    <div class="footer-section social-media" *ngIf="socialMediaLinks.length > 0">
+      <div class="follow-us">
+        <h3>Follow Us</h3>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+        <a *ngFor="let link of socialMediaLinks" [href]="link.url" target="_blank">
+          <i [class]="link.fontAwesomeIcon"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- 🌍 Map Section -->
+    <div class="footer-section google-map">
+      <app-google-map></app-google-map>
+    </div>
+  </div>
+   <!-- 🚗 GIF animations inside footer only -->
+   <div class="footer_bg">
+    <div class="footer_bg_one"></div> <!-- Car -->
+    <div class="footer_bg_two"></div> <!-- Cyclist -->
+  </div>
+</footer>
+

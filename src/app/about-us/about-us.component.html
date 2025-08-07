@@ -1,0 +1,40 @@
+<section class="about-us">
+  <div class="about-container">
+    <div class="about-content">
+      <h1 class="about-title">ABOUT US</h1>
+      <p class="about-description">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation.
+      </p>
+      <button class="learn-more-button">LEARN MORE</button>
+    </div>
+    <div class="about-image">
+      <img src="assets/images/about-us.png" alt="About Us Illustration" />
+    </div>
+  </div>
+</section>
+
+<app-live-count></app-live-count>
+  
+  <h2 style="text-align: center;">Meet Our Team</h2>
+  <div class="team-container">
+    <button class="scroll-button left" (click)="scrollLeft()">&#10094;</button>
+    
+    <div class="team" #teamContainer>
+      <div class="team-member" *ngFor="let member of clonedTeam">
+        <div class="team-member-container">
+          <img [src]="member.image" [alt]="member.name" class="team-member-image" />
+          <div class="team-member-details">
+            <h3>{{ member.name }}</h3>
+            <h3>{{ member.role }}</h3>
+            <div class="team-member-info">
+              <p>{{ member.info }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="scroll-button right" (click)="scrollRight()">&#10095;</button>
+  </div>
+  

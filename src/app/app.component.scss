@@ -1,0 +1,75 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  z-index: 1000;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin-top: 60px; // space below fixed header
+  height: calc(100vh - 60px - 60px); // minus header + footer height
+}
+
+.layout {
+  display: flex;
+  flex-grow: 1;
+}
+
+app-sidebar {
+  height: 100%;
+  background: #fff;
+  border-right: 1px solid #ddd;
+}
+
+.page-body {
+  flex-grow: 1;
+  height: 100%;
+  margin-top: 40px;
+}
+
+.page-body-login {
+  flex-grow: 1;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+app-footer {
+  height: 60px;
+  background: #f8f9fa;
+  border-top: 1px solid #ddd;
+  text-align: center;
+  line-height: 60px;
+}
+
+.page-body.collapsed {
+  margin-left: 60px; // or reduced padding
+}
+.page-body-login {
+  flex-grow: 1;
+  overflow-y: auto;
+  height: 100%;
+  margin-left: 180px; // Match full sidebar width by default
+  transition: margin-left 0.3s ease;
+
+  &.collapsed {
+    margin-left: 60px; // When sidebar is collapsed
+  }
+}
+

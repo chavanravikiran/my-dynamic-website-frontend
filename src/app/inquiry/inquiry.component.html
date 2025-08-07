@@ -1,0 +1,70 @@
+<form [formGroup]="inquiryForm" (ngSubmit)="submitInquiry()" style="margin-left:40px;">
+  <h2>Get in Touch</h2>
+  <p>Have a question or need assistance? Feel free to reach out to us through the contact form below. We'll get back to you as soon as possible.</p>
+  <mat-form-field class="form-group" appearance="fill">
+    <mat-label>First name *</mat-label>
+    <input matInput formControlName="firstName" required />
+    <mat-error *ngIf="inquiryForm.get('firstName')?.hasError('required')">
+      First name is required
+    </mat-error>
+    <mat-error *ngIf="inquiryForm.get('firstName')?.hasError('pattern')">
+      Only alphabets allowed
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="form-group" appearance="fill">
+    <mat-label>Last name *</mat-label>
+    <input matInput formControlName="lastName" required />
+    <mat-error *ngIf="inquiryForm.get('lastName')?.hasError('required')">
+      Last name is required
+    </mat-error>
+    <mat-error *ngIf="inquiryForm.get('lastName')?.hasError('pattern')">
+      Only alphabets allowed
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="form-group" appearance="fill">
+    <mat-label>Email *</mat-label>
+    <input matInput formControlName="email" required />
+    <mat-error *ngIf="inquiryForm.get('email')?.hasError('required')">
+      Email is required
+    </mat-error>
+    <mat-error *ngIf="inquiryForm.get('email')?.hasError('email')">
+      Invalid email format
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="form-group" appearance="fill">
+    <mat-label>phone </mat-label>
+    <input matInput formControlName="phone" required (keypress)="numberOnly($event)" maxlength="10"/>
+    <mat-error *ngIf="inquiryForm.get('phone')?.hasError('required')">
+      phone is required
+    </mat-error>
+    <mat-error *ngIf="inquiryForm.get('phone')?.hasError('phone')">
+      phone email format
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="form-group" appearance="fill">
+    <mat-label>Title *</mat-label>
+    <input matInput formControlName="title" required />
+    <mat-error *ngIf="inquiryForm.get('title')?.hasError('required')">
+      Title is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="form-group" appearance="fill">
+    <mat-label>Message</mat-label>
+    <textarea matInput formControlName="message" required></textarea>
+    <mat-error *ngIf="inquiryForm.get('message')?.hasError('required')">
+      Message is required
+    </mat-error>
+    <mat-error *ngIf="inquiryForm.get('message')?.hasError('minlength')">
+      Message must be at least 10 characters long
+    </mat-error>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit" class="submit-btn">
+    Submit
+  </button>
+</form>

@@ -1,0 +1,62 @@
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  // .inquiry-form {
+  //   max-width: 600px;
+  //   margin: 0 auto;
+  //   // padding: 20px;
+  //   // border: 1px solid #ccc;
+  //   border-radius: 30px;
+    
+  // }
+  
+  h2 {
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+    margin-right: 65px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+//   input[type="text"],
+//   input[type="email"],
+//   textarea {
+//     width: 100%;
+//     padding: 10px;
+//     // border: 1px solid #ccc;
+//     border-radius: 3px;
+//   }
+  
+  textarea {
+    height: 100px;
+  }
+  
+  .submit-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 31px;
+    cursor: pointer;
+  }
+
+//   .fade-in {
+//     opacity: 0;
+//     transform: translateY(20px);
+//     transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+//   }
+  
+//   .fade-in.active {
+//     opacity: 1;
+//     transform: translateY(0);
+//   }
