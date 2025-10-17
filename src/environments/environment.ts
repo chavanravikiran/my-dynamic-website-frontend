@@ -6,7 +6,7 @@ import { WebSiteType } from "src/app/appointment/models/website-type.enum";
 
 export const environment = {
   production: false,
-  websiteType: WebSiteType.ECOMMERCE_WEBSITE,
+  websiteType: WebSiteType.EREGISTRATION,
   apiUrl : "http://localhost:8280"
 };
 
