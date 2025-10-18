@@ -59,17 +59,19 @@ app-footer {
 }
 
 .page-body.collapsed {
-  margin-left: 60px; // or reduced padding
+  // margin-left: 60px; // or reduced padding
+  margin-left: 100px;
 }
 .page-body-login {
   flex-grow: 1;
   overflow-y: auto;
   height: 100%;
-  margin-left: 180px; // Match full sidebar width by default
+  margin-left: 210px; // Match full sidebar width by default
   transition: margin-left 0.3s ease;
 
   &.collapsed {
-    margin-left: 60px; // When sidebar is collapsed
+    // margin-left: 60px; // When sidebar is collapsed
+    margin-left: 90px;
   }
 }
 

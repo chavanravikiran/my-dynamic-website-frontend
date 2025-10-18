@@ -18,6 +18,9 @@ import { RegistrationComponent } from "./registration/registration.component";
 import { LandingComponent } from "./landing/landing.component";
 import { ForgotPasswordComponent } from "./forgot-password/forgot-password.component";
 import { ResetPasswordComponent } from "./reset-password/reset-password.component";
+import { BookAppointmentComponent } from "./book-appointment/book-appointment.component";
+import { BookAppointmentAcknowledgementComponent } from "./book-appointment-acknowledgement/book-appointment-acknowledgement.component";
+import { MyAppointmentsComponent } from "./my-appointments/my-appointments.component";
 
 
 const routes: Routes = [
@@ -38,6 +41,9 @@ const routes: Routes = [
   { path: 'registration', component: RegistrationComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'reset-password', component: ResetPasswordComponent },
+  { path: 'book-appointment', component: BookAppointmentComponent, canActivate: [AuthGuard] },
+  { path: 'book-acknowledgement', component: BookAppointmentAcknowledgementComponent },
+  { path: 'my-appointment', component: MyAppointmentsComponent },
   {
     path: "appointment",
     children: [],
