@@ -1,0 +1,45 @@
+<div class="my-appointments">
+  <div class="filters">
+    <select [(ngModel)]="statusFilter">
+      <option value="">All statuses</option>
+      <option *ngFor="let s of statuses" [value]="s">{{ s }}</option>
+    </select>
+
+    <input type="date" [(ngModel)]="dateFrom" placeholder="From" />
+    <input type="date" [(ngModel)]="dateTo" placeholder="To" />
+
+    <button (click)="applyFilters()">Apply</button>
+    <button (click)="clearFilters()">Clear</button>
+  </div>
+
+  <div *ngIf="loading" class="loading">Loading...</div>
+
+  <div *ngIf="!loading && appointments.length === 0" class="empty">
+    No appointments found.
+  </div>
+
+  <div class="cards" *ngIf="appointments.length">
+    <div class="card" *ngFor="let a of appointments">
+      <div class="card-head">
+        <div class="service">{{ a.serviceName }}</div>
+        <div class="status" [ngClass]="a.status.toLowerCase()">{{ a.status }}</div>
+      </div>
+      <div class="card-body">
+        <div class="date">{{ a.date | date:'fullDate' }}</div>
+        <div class="time">{{ a.startTime }} - {{ a.endTime }}</div>
+      </div>
+
+      <div class="card-actions">
+        <button (click)="goToDetails(a)">View</button>
+        <button *ngIf="a.status === 'BOOKED'" (click)="confirm(a)">Confirm</button>
+        <button *ngIf="a.status === 'BOOKED'" (click)="cancel(a)">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="pagination" *ngIf="totalPages > 1">
+    <button (click)="prevPage()" [disabled]="page === 0">Prev</button>
+    <span>Page {{ page + 1 }} / {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="page + 1 >= totalPages">Next</button>
+  </div>
+</div>

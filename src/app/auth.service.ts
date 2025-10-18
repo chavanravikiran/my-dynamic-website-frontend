@@ -12,9 +12,20 @@ import { CustomSnackbarComponent } from './custom-snackbar/custom-snackbar.compo
 export class AuthService {
   private apiUrl = environment.apiUrl + '/api/users';  // Example: http://localhost:8080/auth/login
   private websiteType = environment.websiteType;
+  private currentUser: any = null;
+
+  constructor(private http: HttpClient,private snackBar: MatSnackBar) {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      this.currentUser = JSON.parse(storedUser);
+    }
+  }
   
-  constructor(private http: HttpClient,private snackBar: MatSnackBar) {}
-  
+  get currentUserValue() {
+    return this.currentUser;
+  }
+
+
   showMessage(message: string, type: 'success' | 'error') {
       this.snackBar.openFromComponent(CustomSnackbarComponent, {
         data: { message, type },

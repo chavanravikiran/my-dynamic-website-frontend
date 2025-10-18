@@ -1,0 +1,163 @@
+.calendar-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1rem;
+  background: #f9fafc;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.06);
+
+  /* --- Date Buttons --- */
+  .dates-grid {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 6px;
+    scroll-snap-type: x mandatory;
+
+    button {
+      flex: 0 0 auto;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 6px;
+      background: #ffffff;
+      color: #333;
+      font-weight: 500;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      scroll-snap-align: start;
+
+      &:hover {
+        background: #eaf3ff;
+        transform: translateY(-2px);
+      }
+
+      &.selected {
+        background: #007bff;
+        color: #fff;
+        box-shadow: 0 2px 6px rgba(0, 123, 255, 0.3);
+      }
+    }
+  }
+
+  /* --- Slots Section --- */
+  .slots-grid {
+    background: #fff;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+
+    h4 {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      color: #333;
+      border-bottom: 2px solid #007bff;
+      display: inline-block;
+      padding-bottom: 4px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+
+      tr {
+        border-bottom: 1px solid #eee;
+        transition: background 0.3s;
+
+        &:hover {
+          background: #f9f9f9;
+        }
+      }
+
+      td {
+        padding: 12px 8px;
+        vertical-align: middle;
+      }
+
+      .time {
+        font-weight: 500;
+        color: #222;
+        font-size: 0.95rem;
+      }
+
+      .action {
+        text-align: right;
+
+        button {
+          padding: 8px 14px;
+          border: none;
+          border-radius: 6px;
+          font-weight: 500;
+          min-width: 100px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+
+          &.available {
+            background-color: #28a745;
+            color: #fff;
+
+            &:hover {
+              background-color: #218838;
+              transform: scale(1.03);
+            }
+          }
+
+          &.full {
+            background-color: #adb5bd;
+            color: #f8f9fa;
+            cursor: not-allowed;
+          }
+        }
+      }
+    }
+  }
+
+  /* --- Responsive Layout --- */
+  @media (max-width: 768px) {
+    .slots-grid table {
+      display: block;
+
+      tr {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid #eee;
+        border-radius: 10px;
+        background: #fafafa;
+      }
+
+      td {
+        padding: 6px 0;
+      }
+
+      .action {
+        text-align: center;
+
+        button {
+          width: 100%;
+        }
+      }
+    }
+
+    .dates-grid {
+      gap: 8px;
+
+      button {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .slots-grid h4 {
+      font-size: 1rem;
+    }
+
+    .dates-grid button {
+      font-size: 0.85rem;
+    }
+  }
+}

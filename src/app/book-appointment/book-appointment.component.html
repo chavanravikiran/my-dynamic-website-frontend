@@ -1,0 +1,28 @@
+<div class="calendar-container">
+  <!-- Date Buttons -->
+  <div class="dates-grid">
+    <button *ngFor="let date of object.keys(slotsByDate)"
+            (click)="selectDate(date)"
+            [class.selected]="selectedDate === date">
+      {{ date | date:'dd/MM/yyyy' }}
+    </button>
+  </div>
+
+  <!-- Slots Table -->
+  <div class="slots-grid" *ngIf="selectedDate">
+    <h4>Available Slots for {{ selectedDate | date:'dd/MM/yyyy' }}</h4>
+    <table>
+      <tr *ngFor="let slot of slotsByDate[selectedDate]">
+        <td class="time">{{ slot.startTime }} - {{ slot.endTime }}</td>
+        <td class="action">
+          <button [disabled]="slot.available === 0"
+                  [class.available]="slot.available > 0"
+                  [class.full]="slot.available === 0"
+                  (click)="bookSlot(slot)">
+            {{ slot.available > 0 ? 'Book (' + slot.available + ')' : 'Full' }}
+          </button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

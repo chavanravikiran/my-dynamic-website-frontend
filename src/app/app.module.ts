@@ -65,6 +65,9 @@ import { CustomSnackbarComponent } from "./custom-snackbar/custom-snackbar.compo
 import { ResetPasswordComponent } from "./reset-password/reset-password.component";
 import { ForgotPasswordComponent } from "./forgot-password/forgot-password.component";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { BookAppointmentComponent } from "./book-appointment/book-appointment.component";
+import { BookAppointmentAcknowledgementComponent } from "./book-appointment-acknowledgement/book-appointment-acknowledgement.component";
+import { MyAppointmentsComponent } from "./my-appointments/my-appointments.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -87,8 +90,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     BreadcrumbComponent,
     CustomSnackbarComponent,
     ResetPasswordComponent,
-    ForgotPasswordComponent
-    
+    ForgotPasswordComponent,
+    BookAppointmentComponent,
+    BookAppointmentAcknowledgementComponent,
+    MyAppointmentsComponent
     ],
   imports: [
     BrowserModule,
