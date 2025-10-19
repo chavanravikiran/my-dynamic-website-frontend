@@ -3,57 +3,52 @@
     <h2>Appointment Dashboard</h2>
     <button (click)="toggleCreateSlot()">+ Add Slot</button>
   </div>
-
-  <!-- <table class="dashboard-table" *ngIf="dashboardData.length > 0">
+  <table class="dashboard-table" *ngIf="dashboardGrouped.length > 0">
     <thead>
       <tr>
         <th>Date</th>
         <th>Total Slots</th>
         <th>Booked</th>
         <th>Remaining</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let d of dashboardData">
-        <td>{{ d.date }}</td>
-        <td>{{ d.totalSlots }}</td>
-        <td>{{ d.bookedCount }}</td>
-        <td>{{ d.remainingCount }}</td>
-      </tr>
-    </tbody>
-  </table> -->
-
-    <table class="dashboard-table" *ngIf="dashboardGrouped.length > 0">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Total Slots</th>
-          <th>Booked</th>
-          <th>Remaining</th>
+      <ng-container *ngFor="let d of dashboardGrouped">
+        <!-- Summary row -->
+        <tr (click)="toggleExpand(d)" class="summary-row">
+          <td>{{ d.date }}</td>
+          <td>{{ d.totalSlots }}</td>
+          <td>{{ d.bookedCount }}</td>
+          <td>{{ d.remainingCount }}</td>
+          <td></td>
         </tr>
-      </thead>
-      <tbody>
-        <ng-container *ngFor="let d of dashboardGrouped">
-          <!-- Summary row -->
-          <tr (click)="toggleExpand(d)" class="summary-row">
-            <td>{{ d.date }}</td>
-            <td>{{ d.totalSlots }}</td>
-            <td>{{ d.bookedCount }}</td>
-            <td>{{ d.remainingCount }}</td>
-          </tr>
 
-          <!-- Expanded interval rows -->
-          <ng-container *ngIf="d.expanded">
-            <tr class="interval-row" *ngFor="let i of d.intervals">
-              <td></td> <!-- empty cell for alignment -->
-              <td>{{ i.fromTime }} - {{ i.toTime }}</td>
-              <td>{{ i.bookedCount }}</td>
-              <td>{{ i.remainingCount }}</td>
-            </tr>
-          </ng-container>
+        <!-- Expanded interval rows -->
+        <ng-container *ngIf="d.expanded">
+          <tr class="interval-row" *ngFor="let i of d.intervals">
+            <td></td> <!-- empty cell for alignment -->
+            <td>{{ i.fromTime }} - {{ i.toTime }}</td>
+            <td>{{ i.bookedCount }}</td>
+            <td>{{ i.remainingCount }}</td>
+            <td>
+              <button class="icon-btn cancel-btn" 
+                      (click)="cancelSlot(d.date, i); $event.stopPropagation();" 
+                      title="Cancel">
+                <i class="fa fa-times"></i>
+              </button>
+
+              <button class="icon-btn update-btn" 
+                      (click)="openEditModal(d.date, i); $event.stopPropagation();" 
+                      title="Update">
+                <i class="fa fa-edit"></i>
+              </button>
+            </td>
+          </tr>
         </ng-container>
-      </tbody>
-    </table>
+      </ng-container>
+    </tbody>
+  </table>
 
   <div class="empty" *ngIf="!loading && dashboardGrouped.length === 0">
     No appointment data available.

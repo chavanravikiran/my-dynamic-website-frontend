@@ -74,16 +74,16 @@ export class AppointmentService {
   }
 
   createSlotV2(payload: any) {
-    return this.http.post(`${apiUrl}/api/appointments/create-slot`, payload);
+    return this.http.post(`${apiUrl}/api/appointments/create-slot-v3`, payload);
   }
 
   deactivateSlot(slotId: number): Observable<any> {
     return this.http.delete(`${apiUrl}/api/appointments/slots/${slotId}`);
   }
 
-  getByWebsiteAndDate(websiteKey: number, date: string) {
-    return this.http.get<AvailableIntervalDTO[]>(`${apiUrl}/api/appointments/website/${websiteKey}/date/${date}`);
-  }
+  // getByWebsiteAndDate(websiteKey: number, date: string) {
+  //   return this.http.get<AvailableIntervalDTO[]>(`${apiUrl}/api/appointments/website/${websiteKey}/date/${date}`);
+  // }
 
   book(payload: any) {
     return this.http.post(`${apiUrl}/api/appointments/book`, payload);
@@ -101,7 +101,7 @@ export class AppointmentService {
 
   getSlotsFromTodayV1(websiteKey: number) {
     return this.http.get<{ [date: string]: AvailableIntervalDTO[] }>(
-      `${apiUrl}/api/appointments/available-from-today/${websiteKey}`
+      `${apiUrl}/api/appointments/available-from-today-v3/${websiteKey}`
     );
   }
 
@@ -130,4 +130,14 @@ export class AppointmentService {
   getDashboard() {
     return this.http.get<any[]>(`${apiUrl}/api/appointment/dashboard`);//${websiteKey}
   }
+
+  modifySlot(action: string, date: string, fromTime: string, toTime: string, slotsPerInterval?: number) {
+    let params: any = { action, date, fromTime, toTime };
+    if (action === 'update' && slotsPerInterval) {
+      params.slotsPerInterval = slotsPerInterval;
+    }
+
+    return this.http.put(`${apiUrl}/api/appointment/slots/modify`, null, { params });
+  }
+
 }
