@@ -70,3 +70,24 @@
 .interval-row {
   background: #f9faff;
 }
+.icon-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1.2rem; // size of the icon
+  margin-right: 8px; // spacing between icons
+  padding: 4px;
+  transition: transform 0.2s;
+}
+
+.icon-btn:hover {
+  transform: scale(1.2); // subtle hover effect
+}
+
+.cancel-btn i {
+  color: #e74c3c; // red for cancel
+}
+
+.update-btn i {
+  color: #3498db; // blue for update
+}

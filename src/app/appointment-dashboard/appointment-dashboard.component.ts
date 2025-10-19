@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AppointmentService } from '../appointment/services/appointment.service';
 import { WebSiteType } from '../appointment/models/website-type.enum';
 import { environment } from 'src/environments/environment';
-
 @Component({
   selector: 'app-appointment-dashboard',
   templateUrl: './appointment-dashboard.component.html',
@@ -40,24 +39,10 @@ export class AppointmentDashboardComponent implements OnInit {
     });
   }
 
-  // fetchDashboard() {
-  //   this.loading = true;
-  //   this.appointmentService.getDashboard().subscribe({
-  //     next: (res) => {
-  //       this.dashboardData = res;
-  //       this.loading = false;
-  //     },
-  //     error: () => {
-  //       this.loading = false;
-  //     }
-  //   });
-  // }
-
   toggleCreateSlot() {
     this.showCreateSlot = !this.showCreateSlot;
   }
 
-  // Time slot generator
   generateIntervals() {
     const v = this.slotForm.getRawValue();
     this.intervalSlots = [];
@@ -162,7 +147,7 @@ export class AppointmentDashboardComponent implements OnInit {
         // Group by date
         const grouped: any = {};
         res.forEach(slot => {
-          const date = slot.date;
+          const date = slot.id.date;
           if (!grouped[date]) {
             grouped[date] = {
               date,
@@ -174,8 +159,8 @@ export class AppointmentDashboardComponent implements OnInit {
             };
           }
           grouped[date].intervals.push({
-            fromTime: slot.fromTime,
-            toTime: slot.toTime,
+            fromTime: slot.id.fromTime,
+            toTime: slot.id.toTime, 
             bookedCount: slot.bookedCount,
             remainingCount: slot.remainingCount
           });
@@ -191,10 +176,63 @@ export class AppointmentDashboardComponent implements OnInit {
         this.loading = false;
       }
     });
-}
+  }
 
-toggleExpand(dateGroup: any) {
-  dateGroup.expanded = !dateGroup.expanded;
-}
+  toggleExpand(dateGroup: any) {
+    this.dashboardGrouped.forEach(d => {
+      if (d !== dateGroup) {
+        d.expanded = false;
+      }
+    });
 
+    dateGroup.expanded = !dateGroup.expanded;
+  }
+
+  cancelSlot(date: string, interval: any) {
+    const confirmCancel = confirm(`Do you want to cancel slot ${interval.fromTime} - ${interval.toTime}?`);
+    if (!confirmCancel) return;
+
+    const finalConfirm = confirm(`Are you sure you want to cancel this slot?`);
+    if (!finalConfirm) return;
+
+    this.appointmentService.modifySlot('cancel', date, interval.fromTime, interval.toTime)
+      .subscribe({
+        next: () => {
+          alert('Slot cancelled successfully');
+        },
+        error: (err) => {
+          console.log(err?.error || 'Error cancelling slot');
+        }
+      });
+      window.location.reload();
+  }
+  
+  openEditModal(date: string, interval: any) {
+    const newCountStr = prompt(
+      `Current slot count: ${interval.remainingCount + interval.bookedCount}\nEnter new slot count:`,
+      `${interval.remainingCount + interval.bookedCount}`
+    );
+
+    if (newCountStr === null) return; // User clicked Cancel
+
+    const newCount = parseInt(newCountStr, 10);
+    if (isNaN(newCount) || newCount < 0) {
+      alert('Invalid slot count entered');
+      return;
+    }
+
+    this.appointmentService.modifySlot('update', date, interval.fromTime, interval.toTime, newCount)
+      .subscribe({
+        next: () => {
+          alert('Slot count updated successfully');
+          this.fetchDashboard();
+          window.location.reload();
+
+        },
+        error: (err) => {
+          console.log(err?.error || 'Error in modify slot');
+        }
+      });
+      window.location.reload();
+  }
 }
