@@ -73,6 +73,10 @@ export class AppointmentService {
     return this.http.post(`${apiUrl}/api/appointments/slots`, payload);
   }
 
+  createSlotV2(payload: any) {
+    return this.http.post(`${apiUrl}/api/appointments/create-slot`, payload);
+  }
+
   deactivateSlot(slotId: number): Observable<any> {
     return this.http.delete(`${apiUrl}/api/appointments/slots/${slotId}`);
   }
@@ -92,6 +96,12 @@ export class AppointmentService {
   getSlotsFromToday(websiteKey: number): Observable<{ [date: string]: AvailableIntervalDTO[] }> {
     return this.http.get<{ [date: string]: AvailableIntervalDTO[] }>(
       `${apiUrl}/api/appointments/website/${websiteKey}/from-today`
+    );
+  }
+
+  getSlotsFromTodayV1(websiteKey: number) {
+    return this.http.get<{ [date: string]: AvailableIntervalDTO[] }>(
+      `${apiUrl}/api/appointments/available-from-today/${websiteKey}`
     );
   }
 
@@ -115,5 +125,9 @@ export class AppointmentService {
 
   generateReceipt(bookingId: number) {
     return this.http.get<any>(`${apiUrl}/api/reports/generateAppointmentReceipt/${bookingId}`);
+  }
+
+  getDashboard() {
+    return this.http.get<any[]>(`${apiUrl}/api/appointment/dashboard`);//${websiteKey}
   }
 }

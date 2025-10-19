@@ -21,6 +21,8 @@ import { ResetPasswordComponent } from "./reset-password/reset-password.componen
 import { BookAppointmentComponent } from "./book-appointment/book-appointment.component";
 import { BookAppointmentAcknowledgementComponent } from "./book-appointment-acknowledgement/book-appointment-acknowledgement.component";
 import { MyAppointmentsComponent } from "./my-appointments/my-appointments.component";
+import { CreateAppointmentSlotComponent } from "./create-appointment-slot/create-appointment-slot.component";
+import { AppointmentDashboardComponent } from "./appointment-dashboard/appointment-dashboard.component";
 
 
 const routes: Routes = [
@@ -44,6 +46,8 @@ const routes: Routes = [
   { path: 'book-appointment', component: BookAppointmentComponent, canActivate: [AuthGuard] },
   { path: 'book-acknowledgement', component: BookAppointmentAcknowledgementComponent },
   { path: 'my-appointment', component: MyAppointmentsComponent },
+  // { path: 'create-appointment-slot', component: CreateAppointmentSlotComponent },
+  { path: 'create-appointment-slot', component: AppointmentDashboardComponent },
   {
     path: "appointment",
     children: [],
