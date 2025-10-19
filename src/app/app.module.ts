@@ -68,6 +68,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BookAppointmentComponent } from "./book-appointment/book-appointment.component";
 import { BookAppointmentAcknowledgementComponent } from "./book-appointment-acknowledgement/book-appointment-acknowledgement.component";
 import { MyAppointmentsComponent } from "./my-appointments/my-appointments.component";
+import { CreateAppointmentSlotComponent } from "./create-appointment-slot/create-appointment-slot.component";
+import { AppointmentDashboardComponent } from "./appointment-dashboard/appointment-dashboard.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -93,7 +95,9 @@ import { MyAppointmentsComponent } from "./my-appointments/my-appointments.compo
     ForgotPasswordComponent,
     BookAppointmentComponent,
     BookAppointmentAcknowledgementComponent,
-    MyAppointmentsComponent
+    MyAppointmentsComponent,
+    CreateAppointmentSlotComponent,
+    AppointmentDashboardComponent
     ],
   imports: [
     BrowserModule,
@@ -134,7 +138,7 @@ import { MyAppointmentsComponent } from "./my-appointments/my-appointments.compo
     TranslocoModule,
     CommonModule,
     GoogleMapsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

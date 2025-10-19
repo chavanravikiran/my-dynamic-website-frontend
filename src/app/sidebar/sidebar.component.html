@@ -1,20 +1,3 @@
-<!-- <nav class="sidebar" [class.collapsed]="collapsed">
-  <div class="sidebar-header">
-    <div class="logo">{{ collapsed ? 'Menu' : 'User Panel' }}</div>
-    <button class="toggle-btn" (click)="toggleSidebar()">
-      {{ collapsed ? '→' : '←' }}
-    </button>
-  </div>
-
-  <ul *ngIf="!collapsed">
-    <li *ngFor="let item of menuItems">
-      <a [routerLink]="getRoutePath(item.featureName)" routerLinkActive="active">
-        <i class="fas" [ngClass]="item.featureIcon" style="margin-right: 10px;"></i>
-        {{ item.featureName }}
-      </a>
-    </li>
-  </ul>
-</nav> -->
 <nav class="sidebar" [class.collapsed]="collapsed">
   <div class="sidebar-header">
     <div class="logo">{{ collapsed ? 'Menu' : 'User Panel' }}</div>

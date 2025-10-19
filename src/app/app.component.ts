@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, HostListener, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { AlertController, ModalController, Platform, ToastController} from "@ionic/angular";
 import { NetworkInterface } from "@awesome-cordova-plugins/network-interface/ngx";
@@ -31,6 +31,7 @@ export class AppComponent implements OnInit{
   websiteType: WebSiteType = environment.websiteType;
 
   isSidebarCollapsed = false;
+  isMobileView: boolean = false;
 
   handleSidebarToggle(collapsed: boolean) {
     this.isSidebarCollapsed = collapsed;
@@ -41,6 +42,7 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    this.checkScreenSize();
     this.websideService.getWebsiteDetails(this.websiteType).subscribe({
       next: (response) => {
         this.websiteDetails = response;
@@ -50,5 +52,18 @@ export class AppComponent implements OnInit{
         this.errorMessage = 'Failed to load website details.';
       },
     });
+  }
+   // Listen to window resize events
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.checkScreenSize();
+  }
+
+  private checkScreenSize() {
+    this.isMobileView = window.innerWidth <= 768;
+    // Optionally collapse sidebar on mobile by default
+    if (this.isMobileView) {
+      this.isSidebarCollapsed = true;
+    }
   }
 }

@@ -1,0 +1,118 @@
+<div class="create-slot-page">
+  <div class="card">
+    <div class="card-header">
+      <h2>Create Appointment Slot</h2>
+      <button class="back-btn" (click)="toggleCreateSlot()">← Back to Dashboard</button>
+    </div>
+
+    <form [formGroup]="slotForm" (ngSubmit)="onSubmit()">
+      <!-- Service -->
+      <div class="row">
+        <label>Service name</label>
+        <input formControlName="serviceName" type="text" readonly />
+      </div>
+      <div class="row">
+        <label>Select Date Range</label>
+
+        <div class="date-range-wrapper">
+          <mat-form-field appearance="outline" class="half-width">
+            <mat-label>Start Date</mat-label>
+            <input
+              matInput
+              [matDatepicker]="startPicker"
+              placeholder="Start date"
+              formControlName="startDate"
+            />
+            <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+            <mat-datepicker #startPicker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="half-width">
+            <mat-label>End Date</mat-label>
+            <input
+              matInput
+              [matDatepicker]="endPicker"
+              placeholder="End date"
+              formControlName="endDate"
+            />
+            <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+            <mat-datepicker #endPicker></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <small class="info">
+          Select a date range; all dates in range will get the same slot configuration.
+        </small>
+      </div>
+
+      <!-- Time Range -->
+      <div class="row two-cols">
+        <div>
+          <label>From time</label>
+          <input formControlName="fromTime" type="time" step="60" (change)="generateIntervals()" />
+        </div>
+        <div>
+          <label>To time</label>
+          <input formControlName="toTime" type="time" step="60" (change)="generateIntervals()" />
+        </div>
+      </div>
+
+      <!-- Interval -->
+      <div class="row two-cols">
+        <div>
+          <label>Interval (minutes)</label>
+          <input formControlName="intervalMinutes" type="number" min="1" (change)="generateIntervals()" />
+        </div>
+        <div>
+          <label>Slots per interval</label>
+          <input formControlName="slotsPerInterval" type="number" min="1" (change)="generateIntervals()" />
+        </div>
+      </div>
+
+      <!-- Notes -->
+      <div class="row">
+        <label>Notes (optional)</label>
+        <textarea formControlName="notes" rows="2"></textarea>
+      </div>
+
+      <!-- Preview -->
+      <div class="slot-preview" *ngIf="intervalSlots.length > 0">
+        <h4>Generated Time Slots</h4>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Available Count</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let slot of intervalSlots">
+                <td>{{ slot.date }}</td>
+                <td>{{ slot.start }}</td>
+                <td>{{ slot.end }}</td>
+                <td>{{ slot.available }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="actions">
+        <button type="button" class="preset-btn" (click)="fillMorningPreset()">⏰ Fill Preset</button>
+        <button type="submit" [disabled]="submitting" class="submit-btn">
+          {{ submitting ? 'Creating...' : 'Create Slots' }}
+        </button>
+      </div>
+
+      <!-- Feedback -->
+      <div class="feedback">
+        <p class="success" *ngIf="successMessage">{{ successMessage }}</p>
+        <p class="error" *ngIf="error">{{ error }}</p>
+      </div>
+    </form>
+  </div>
+</div>

@@ -25,7 +25,7 @@ slotsByDate: { [date: string]: AvailableIntervalDTO[] } = {};
 
   loadSlots(): void {
     const websiteKey = 1;
-    this.appointmentService.getSlotsFromToday(websiteKey).subscribe({
+    this.appointmentService.getSlotsFromTodayV1(websiteKey).subscribe({
       next: data => {
         // sort dates ascending
         this.slotsByDate = Object.keys(data)
