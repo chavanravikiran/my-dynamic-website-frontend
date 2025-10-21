@@ -1,0 +1,16 @@
+<div class="payment-container">
+  <h2>Pay Online</h2>
+
+  <div class="amount-box">
+    <p>Application ID: {{ applicationId }}</p>
+    <p>Amount to Pay: ₹{{ amount }}</p>
+  </div>
+
+  <button (click)="initiatePayment()" [disabled]="loading" class="pay-btn">
+    {{ loading ? 'Processing...' : 'Pay ₹' + amount }}
+  </button>
+
+  <div class="note">
+    * Payments are processed securely using Razorpay.
+  </div>
+</div>

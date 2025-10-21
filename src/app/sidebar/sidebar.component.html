@@ -16,10 +16,19 @@
   </ul>
 
   <!-- Collapsed state version -->
-  <ul *ngIf="collapsed">
+  <!-- <ul *ngIf="collapsed">
     <li *ngFor="let item of menuItems">
       <a [routerLink]="getRoutePath(item.featureName)" routerLinkActive="active">
         <i class="fas" [ngClass]="item.featureIcon" style="margin-right: 10px;"></i>
+        
+      </a>
+    </li>
+  </ul> -->
+  <ul *ngIf="collapsed" class="collapsed-menu">
+    <li *ngFor="let item of menuItems" class="tooltip-container">
+      <a [routerLink]="getRoutePath(item.featureName)" routerLinkActive="active">
+        <i class="fas" [ngClass]="item.featureIcon"></i>
+        <span class="tooltip-text">{{ item.featureName }}</span>
       </a>
     </li>
   </ul>

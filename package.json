@@ -81,6 +81,7 @@
     "particles.js": "^2.0.0",
     "pdfjs-dist": "2.6.347",
     "phonegap-plugin-barcodescanner": "^8.1.0",
+    "razorpay": "^2.9.6",
     "rxjs": "~6.6.0",
     "signature_pad": "^4.1.4",
     "swiper": "^8.3.2",
