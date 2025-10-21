@@ -139,5 +139,16 @@ export class AppointmentService {
 
     return this.http.put(`${apiUrl}/api/appointment/slots/modify`, null, { params });
   }
+  createPayment(applicationId: number, amount: number): Observable<any> {
+      return this.http.post(`${apiUrl}/api/payments/create`, null, {
+        params: {
+          applicationId: applicationId.toString(),
+          amount: amount.toString()
+        }
+      });
+    }
 
+    verifyPayment(payload: any): Observable<any> {
+      return this.http.post(`${apiUrl}/api/payments/verify`, payload);
+    }
 }

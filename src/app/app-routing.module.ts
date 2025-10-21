@@ -23,12 +23,13 @@ import { BookAppointmentAcknowledgementComponent } from "./book-appointment-ackn
 import { MyAppointmentsComponent } from "./my-appointments/my-appointments.component";
 import { CreateAppointmentSlotComponent } from "./create-appointment-slot/create-appointment-slot.component";
 import { AppointmentDashboardComponent } from "./appointment-dashboard/appointment-dashboard.component";
+import { OnlinePaymentComponent } from "./online-payment/online-payment.component";
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'services', component: ServicesComponent ,canActivate: [AuthGuard]},
+  { path: 'services', component: ServicesComponent},
   { path: 'contactus', component: ContactUsComponent },
   { path: 'design', component: DesignComponent },
   // { path: 'availability', component: AvailabilityComponent },
@@ -44,10 +45,11 @@ const routes: Routes = [
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'reset-password', component: ResetPasswordComponent },
   { path: 'book-appointment', component: BookAppointmentComponent, canActivate: [AuthGuard] },
-  { path: 'book-acknowledgement', component: BookAppointmentAcknowledgementComponent },
-  { path: 'my-appointment', component: MyAppointmentsComponent },
+  { path: 'book-acknowledgement', component: BookAppointmentAcknowledgementComponent,canActivate: [AuthGuard] },
+  { path: 'my-appointment', component: MyAppointmentsComponent,canActivate: [AuthGuard] },
   // { path: 'create-appointment-slot', component: CreateAppointmentSlotComponent },
-  { path: 'create-appointment-slot', component: AppointmentDashboardComponent },
+  { path: 'create-appointment-slot', component: AppointmentDashboardComponent,canActivate: [AuthGuard]},
+  { path: 'payment-screen', component: OnlinePaymentComponent,canActivate: [AuthGuard]},
   {
     path: "appointment",
     children: [],

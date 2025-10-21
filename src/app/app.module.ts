@@ -70,6 +70,7 @@ import { BookAppointmentAcknowledgementComponent } from "./book-appointment-ackn
 import { MyAppointmentsComponent } from "./my-appointments/my-appointments.component";
 import { CreateAppointmentSlotComponent } from "./create-appointment-slot/create-appointment-slot.component";
 import { AppointmentDashboardComponent } from "./appointment-dashboard/appointment-dashboard.component";
+import { OnlinePaymentComponent } from "./online-payment/online-payment.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -97,7 +98,8 @@ import { AppointmentDashboardComponent } from "./appointment-dashboard/appointme
     BookAppointmentAcknowledgementComponent,
     MyAppointmentsComponent,
     CreateAppointmentSlotComponent,
-    AppointmentDashboardComponent
+    AppointmentDashboardComponent,
+    OnlinePaymentComponent
     ],
   imports: [
     BrowserModule,
